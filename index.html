@@ -184,6 +184,8 @@
       <label><input id="status-publish-script" type="checkbox" checked><span>Reusable status publishing script added to the project</span></label>
       <label><input id="status-workflow" type="checkbox" checked><span>Project workflow requires dashboard update after each project task</span></label>
       <label><input id="status-pages" type="checkbox" checked><span>GitHub Pages dashboard published online</span></label>
+      <label><input id="status-auto-refresh" type="checkbox" checked><span>Open dashboard automatically refreshes when a newer version is published</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 7 Sep 2026, 2:31 PM AEST</span></label>
     </section>
 
     <section>
@@ -232,17 +234,28 @@
 </main>
 <script>
 (() => {
-  const key = 'email-client-project-status-v1';
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch (_) {}
   document.querySelectorAll('input[type="checkbox"]').forEach(box => {
-    if (Object.prototype.hasOwnProperty.call(saved, box.id)) box.checked = !!saved[box.id];
-    box.addEventListener('change', () => {
-      const state = {};
-      document.querySelectorAll('input[type="checkbox"]').forEach(item => state[item.id] = item.checked);
-      localStorage.setItem(key, JSON.stringify(state));
-    });
+    box.addEventListener('click', event => event.preventDefault());
   });
+
+  let lastPublishedHtml = null;
+  const pollForUpdate = async () => {
+    if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
+    try {
+      const separator = location.search ? '&' : '?';
+      const response = await fetch(`${location.href}${separator}status_check=${Date.now()}`, { cache: 'no-store' });
+      if (!response.ok) return;
+      const html = await response.text();
+      if (lastPublishedHtml === null) {
+        lastPublishedHtml = html;
+        return;
+      }
+      if (html !== lastPublishedHtml) location.reload();
+    } catch (_) {}
+  };
+
+  pollForUpdate();
+  setInterval(pollForUpdate, 30000);
 })();
 </script>
 </body>

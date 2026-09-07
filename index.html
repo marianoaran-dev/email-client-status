@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email Client - Project Status Checklist</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f5f3ee;
+    --panel: #fffdf8;
+    --text: #272727;
+    --muted: #72706a;
+    --line: #d9d5cc;
+    --accent: #4f675d;
+    --done: #587467;
+    --pending: #8b857a;
+    --shadow: 0 8px 24px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1d1d;
+      --panel: #252727;
+      --text: #efeee9;
+      --muted: #aaa79f;
+      --line: #3c3f3e;
+      --accent: #9bb5a9;
+      --done: #99b6a8;
+      --pending: #aaa79f;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Inter, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.4;
+  }
+  main {
+    width: min(1040px, calc(100% - 32px));
+    margin: 36px auto 72px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.05;
+    margin: 0 0 24px;
+    font-weight: 720;
+    letter-spacing: -.025em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 18px 14px;
+    box-shadow: var(--shadow);
+  }
+  section.full { grid-column: 1 / -1; }
+  h2 {
+    margin: 0 0 12px;
+    font-size: 17px;
+    line-height: 1.25;
+    letter-spacing: -.01em;
+  }
+  label {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 8px 4px;
+    border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+    cursor: pointer;
+  }
+  label:first-of-type { border-top: 0; }
+  input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin: 1px 0 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  input:checked + span {
+    color: var(--done);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, var(--done) 55%, transparent);
+  }
+  input:not(:checked) + span { color: var(--text); }
+  .major {
+    font-weight: 680;
+  }
+  @media (max-width: 760px) {
+    main { width: min(100% - 20px, 680px); margin-top: 22px; }
+    .grid { grid-template-columns: 1fr; }
+    section.full { grid-column: auto; }
+  }
+  @media print {
+    :root { color-scheme: light; }
+    body { background: #fff; }
+    main { width: 100%; margin: 0; }
+    section { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Email Client - Full Project Picture</h1>
+  <div class="grid">
+
+    <section class="full">
+      <h2>Overall</h2>
+      <label><input id="overall-design" type="checkbox" checked><span class="major">Visual and UX direction validated</span></label>
+      <label><input id="overall-m1" type="checkbox" checked><span class="major">Milestone 1 complete</span></label>
+      <label><input id="overall-m2" type="checkbox" checked><span class="major">Milestone 2 software scope complete and validated</span></label>
+      <label><input id="overall-prod" type="checkbox"><span class="major">Production-ready email client complete</span></label>
+    </section>
+
+    <section>
+      <h2>Product and Design Foundation</h2>
+      <label><input id="foundation-product" type="checkbox" checked><span>Core product direction defined</span></label>
+      <label><input id="foundation-boundary" type="checkbox" checked><span>Email client and assistant propositions kept separable</span></label>
+      <label><input id="foundation-qe3" type="checkbox" checked><span>Quiet Editorial v3 design direction selected</span></label>
+      <label><input id="foundation-prototype" type="checkbox" checked><span>Interactive HTML design prototype validated</span></label>
+      <label><input id="foundation-designspec" type="checkbox" checked><span>Complete design specification documented</span></label>
+      <label><input id="foundation-implspec" type="checkbox" checked><span>Implementation specification documented</span></label>
+      <label><input id="foundation-evidence" type="checkbox" checked><span>Design/render/native proof evidence retained</span></label>
+    </section>
+
+    <section>
+      <h2>Phase 1 - Milestone 1: Native Foundation</h2>
+      <label><input id="m1-solution" type="checkbox" checked><span>WPF solution and native Windows shell</span></label>
+      <label><input id="m1-designsystem" type="checkbox" checked><span>Design-system/tokens foundation</span></label>
+      <label><input id="m1-themes" type="checkbox" checked><span>Porcelain Light and Graphite Dark themes</span></label>
+      <label><input id="m1-layout" type="checkbox" checked><span>Wide, medium and compact layouts</span></label>
+      <label><input id="m1-list" type="checkbox" checked><span>Virtualised synthetic message list</span></label>
+      <label><input id="m1-reader" type="checkbox" checked><span>Reader shell and message presentation</span></label>
+      <label><input id="m1-attachments" type="checkbox" checked><span>Attachment inspector and pane resizing foundation</span></label>
+      <label><input id="m1-focus" type="checkbox" checked><span>DPI, keyboard and focus foundation</span></label>
+      <label><input id="m1-validation" type="checkbox" checked><span>Native/visual acceptance evidence completed</span></label>
+    </section>
+
+    <section class="full">
+      <h2>Phase 2 - Milestone 2: Workspace and State Model</h2>
+      <label><input id="m2-context" type="checkbox" checked><span>Account/workspace context and restoration</span></label>
+      <label><input id="m2-nav" type="checkbox" checked><span>Transient and pinned mailbox navigation behaviour</span></label>
+      <label><input id="m2-focus" type="checkbox" checked><span>Focused-row and open-reader state separation</span></label>
+      <label><input id="m2-search" type="checkbox" checked><span>Normal search with loading/failure/retry handling</span></label>
+      <label><input id="m2-compose" type="checkbox" checked><span>Compose workspace and transition safety</span></label>
+      <label><input id="m2-drafts" type="checkbox" checked><span>Durable draft preservation and shutdown flush safety</span></label>
+      <label><input id="m2-refsearch" type="checkbox" checked><span>Compose reference search and preview isolation</span></label>
+      <label><input id="m2-escape" type="checkbox" checked><span>Escape precedence including attachment preview</span></label>
+      <label><input id="m2-settings" type="checkbox" checked><span>Settings and custom appearance profiles</span></label>
+      <label><input id="m2-toolbar" type="checkbox" checked><span>Configurable toolbar behaviour and persistence</span></label>
+      <label><input id="m2-concurrency" type="checkbox" checked><span>Original five concurrency/state fixes completed</span></label>
+      <label><input id="m2-f1f5" type="checkbox" checked><span>Independent F1-F5 contradiction fixes completed</span></label>
+      <label><input id="m2-tests" type="checkbox" checked><span>Managed harness: 172/172 checks passing</span></label>
+      <label><input id="m2-build" type="checkbox" checked><span>Release build: 0 warnings, 0 errors</span></label>
+      <label><input id="m2-native" type="checkbox" checked><span>Shell, toolbar, restart and compact native validators passing</span></label>
+      <label><input id="m2-review" type="checkbox" checked><span>Independent Gate 2 review clean and final integrity verified</span></label>
+    </section>
+
+    <section>
+      <h2>Repository and Project Baseline</h2>
+      <label><input id="git-init" type="checkbox" checked><span>Local Git repository initialised</span></label>
+      <label><input id="git-main" type="checkbox"><span>Rename default branch from master to main</span></label>
+      <label><input id="git-ignore" type="checkbox"><span>Review final .gitignore and decide artifacts/ policy</span></label>
+      <label><input id="git-firstcommit" type="checkbox"><span>Create initial clean baseline commit</span></label>
+      <label><input id="git-github" type="checkbox"><span>Create GitHub repository</span></label>
+      <label><input id="git-remote" type="checkbox"><span>Add GitHub remote</span></label>
+      <label><input id="git-push" type="checkbox"><span>Push main baseline to GitHub</span></label>
+    </section>
+
+    <section>
+      <h2>Live Project Status Dashboard</h2>
+      <label><input id="status-public-repo" type="checkbox" checked><span>Separate public status-only GitHub repository created</span></label>
+      <label><input id="status-source-private" type="checkbox" checked><span>Email Client source remains unpublished</span></label>
+      <label><input id="status-publish-script" type="checkbox" checked><span>Reusable status publishing script added to the project</span></label>
+      <label><input id="status-workflow" type="checkbox" checked><span>Project workflow requires dashboard update after each project task</span></label>
+      <label><input id="status-pages" type="checkbox" checked><span>GitHub Pages dashboard published online</span></label>
+    </section>
+
+    <section>
+      <h2>Phase 3 - Reader and Rendering Hardening</h2>
+      <label><input id="p3-plain" type="checkbox"><span>Production plain-text renderer</span></label>
+      <label><input id="p3-html" type="checkbox"><span>Secure HTML renderer proof</span></label>
+      <label><input id="p3-content" type="checkbox"><span>Difficult-content containment</span></label>
+      <label><input id="p3-attachments" type="checkbox"><span>Production-grade attachment handling</span></label>
+      <label><input id="p3-bodyfail" type="checkbox"><span>Message-body loading/failure hardening</span></label>
+      <label><input id="p3-images" type="checkbox"><span>Remote-image privacy policy and controls</span></label>
+    </section>
+
+    <section>
+      <h2>Phase 4 - Mail Services and Persistence</h2>
+      <label><input id="p4-accounts" type="checkbox"><span>Production account service</span></label>
+      <label><input id="p4-folders" type="checkbox"><span>Production folder/mailbox service</span></label>
+      <label><input id="p4-messages" type="checkbox"><span>Production message retrieval service</span></label>
+      <label><input id="p4-send" type="checkbox"><span>Real email sending service</span></label>
+      <label><input id="p4-drafts" type="checkbox"><span>Provider-backed durable drafts</span></label>
+      <label><input id="p4-cache" type="checkbox"><span>Caching and indexing strategy</span></label>
+      <label><input id="p4-auth" type="checkbox"><span>Provider authentication/OAuth</span></label>
+    </section>
+
+    <section>
+      <h2>Phase 5 - Production Hardening</h2>
+      <label><input id="p5-performance" type="checkbox"><span>Large-mailbox performance verification</span></label>
+      <label><input id="p5-a11y" type="checkbox"><span>Complete accessibility tree and verification</span></label>
+      <label><input id="p5-windows" type="checkbox"><span>Windows snap, DPI and multi-monitor verification</span></label>
+      <label><input id="p5-recovery" type="checkbox"><span>Crash/error recovery strategy</span></label>
+      <label><input id="p5-package" type="checkbox"><span>Packaging and update strategy</span></label>
+      <label><input id="p5-security" type="checkbox"><span>Privacy and security review</span></label>
+      <label><input id="p5-release" type="checkbox"><span>Production release candidate validated</span></label>
+    </section>
+
+    <section class="full">
+      <h2>Future Assistant / Celia Workstream</h2>
+      <label><input id="ai-independent" type="checkbox" checked><span>Commercial email client kept independent from personal Celia system</span></label>
+      <label><input id="ai-interface" type="checkbox"><span>Define provider-neutral Context / Assistant interface</span></label>
+      <label><input id="ai-prototype" type="checkbox"><span>Prototype assistant value separately from core email UX</span></label>
+      <label><input id="ai-context" type="checkbox"><span>Define context-source trust and knowledge-ingestion rules</span></label>
+      <label><input id="ai-disclosure" type="checkbox"><span>Define outgoing-email disclosure/privacy boundaries</span></label>
+      <label><input id="ai-options" type="checkbox"><span>Evaluate Celia, local intelligence and cloud AI integrations</span></label>
+    </section>
+
+  </div>
+</main>
+<script>
+(() => {
+  const key = 'email-client-project-status-v1';
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch (_) {}
+  document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+    if (Object.prototype.hasOwnProperty.call(saved, box.id)) box.checked = !!saved[box.id];
+    box.addEventListener('change', () => {
+      const state = {};
+      document.querySelectorAll('input[type="checkbox"]').forEach(item => state[item.id] = item.checked);
+      localStorage.setItem(key, JSON.stringify(state));
+    });
+  });
+})();
+</script>
+</body>
+</html>

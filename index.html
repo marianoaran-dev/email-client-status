@@ -49,42 +49,106 @@
     font-weight: 720;
     letter-spacing: -.025em;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    align-items: start;
-  }
-  section {
+  .grid { display: none; }
+  .grid.tree-view {
+    display: block;
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 18px 18px 14px;
+    border-radius: 18px;
+    padding: 16px 16px 20px;
     box-shadow: var(--shadow);
   }
-  section.full { grid-column: 1 / -1; }
-  h2 {
-    margin: 0 0 12px;
-    font-size: 17px;
-    line-height: 1.25;
-    letter-spacing: -.01em;
+  details { position: relative; }
+  details.root > summary,
+  details.branch > summary,
+  details.subbranch > summary,
+  details.completed > summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 18px 20px 1fr;
+    gap: 8px;
+    align-items: start;
+    padding: 8px 6px;
+    border-radius: 9px;
   }
-  label {
+  details.root > summary::-webkit-details-marker,
+  details.branch > summary::-webkit-details-marker,
+  details.subbranch > summary::-webkit-details-marker,
+  details.completed > summary::-webkit-details-marker { display: none; }
+  details.root > summary::before,
+  details.branch > summary::before,
+  details.subbranch > summary::before,
+  details.completed > summary::before {
+    content: "›";
+    width: 18px;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 17px;
+    transform: rotate(0deg);
+    transform-origin: center;
+    transition: transform .15s ease;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+  details.root > summary:hover,
+  details.branch > summary:hover,
+  details.subbranch > summary:hover,
+  details.completed > summary:hover {
+    background: color-mix(in srgb, var(--line) 20%, transparent);
+  }
+  details.root > summary { font-size: 18px; }
+  .branch-title { font-weight: 700; letter-spacing: -.01em; }
+  .subbranch-title { font-weight: 630; }
+  .tree-children {
+    position: relative;
+    margin-left: 14px;
+    padding-left: 24px;
+  }
+  .tree-children::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 8px;
+    left: 8px;
+    border-left: 1px solid var(--line);
+  }
+  .tree-node,
+  .tree-final {
+    position: relative;
     display: grid;
     grid-template-columns: 20px 1fr;
     gap: 10px;
     align-items: start;
-    padding: 8px 4px;
-    border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
-    cursor: pointer;
+    padding: 7px 6px 7px 0;
+    border: 0;
+    cursor: default;
   }
-  label:first-of-type { border-top: 0; }
+  .tree-node::before,
+  .tree-final::before,
+  details.subbranch::before,
+  details.completed::before,
+  details.branch::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 17px;
+    width: 14px;
+    border-top: 1px solid var(--line);
+  }
+  details.completed { margin: 2px 0 5px; }
+  details.completed > summary { color: var(--done); font-size: 14px; }
+  details.completed .tree-children { margin-left: 12px; }
+  .tree-final {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
   input[type="checkbox"] {
     width: 17px;
     height: 17px;
     margin: 1px 0 0;
     accent-color: var(--accent);
-    cursor: pointer;
+    pointer-events: none;
   }
   input:checked + span {
     color: var(--done);
@@ -98,14 +162,19 @@
   }
   @media (max-width: 760px) {
     main { width: min(100% - 20px, 680px); margin-top: 22px; }
-    .grid { grid-template-columns: 1fr; }
-    section.full { grid-column: auto; }
+    .grid.tree-view { padding: 12px 10px 16px; border-radius: 14px; }
+    .tree-children { margin-left: 10px; padding-left: 18px; }
+    .tree-node::before,
+    .tree-final::before,
+    details.subbranch::before,
+    details.completed::before,
+    details.branch::before { left: -10px; width: 9px; }
   }
   @media print {
     :root { color-scheme: light; }
     body { background: #fff; }
     main { width: 100%; margin: 0; }
-    section { break-inside: avoid; box-shadow: none; }
+    .grid.tree-view { box-shadow: none; border: 0; }
   }
 </style>
 </head>
@@ -185,7 +254,9 @@
       <label><input id="status-workflow" type="checkbox" checked><span>Project workflow requires dashboard update after each project task</span></label>
       <label><input id="status-pages" type="checkbox" checked><span>GitHub Pages dashboard published online</span></label>
       <label><input id="status-auto-refresh" type="checkbox" checked><span>Open dashboard automatically refreshes when a newer version is published</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 7 Sep 2026, 2:31 PM AEST</span></label>
+      <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
+      <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 7 Sep 2026, 2:39 PM AEST</span></label>
     </section>
 
     <section>
@@ -234,16 +305,136 @@
 </main>
 <script>
 (() => {
-  document.querySelectorAll('input[type="checkbox"]').forEach(box => {
-    box.addEventListener('click', event => event.preventDefault());
-  });
+  const grid = document.querySelector('.grid');
+  const sections = Array.from(grid.querySelectorAll(':scope > section'));
+  const overall = sections.shift();
+
+  const groups = {
+    'Phase 2 - Milestone 2: Workspace and State Model': [
+      ['Workspace and navigation', ['m2-context', 'm2-nav', 'm2-focus']],
+      ['Search, Compose and interaction state', ['m2-search', 'm2-compose', 'm2-drafts', 'm2-refsearch', 'm2-escape', 'm2-settings', 'm2-toolbar']],
+      ['Concurrency fixes and validation', ['m2-concurrency', 'm2-f1f5', 'm2-tests', 'm2-build', 'm2-native', 'm2-review']]
+    ],
+    'Repository and Project Baseline': [
+      ['Next baseline steps', ['git-main', 'git-ignore', 'git-firstcommit', 'git-github', 'git-remote', 'git-push']]
+    ],
+    'Phase 3 - Reader and Rendering Hardening': [
+      ['Rendering', ['p3-plain', 'p3-html', 'p3-content']],
+      ['Attachments and content safety', ['p3-attachments', 'p3-bodyfail', 'p3-images']]
+    ],
+    'Phase 4 - Mail Services and Persistence': [
+      ['Accounts and mailbox', ['p4-accounts', 'p4-folders', 'p4-auth']],
+      ['Messages and persistence', ['p4-messages', 'p4-send', 'p4-drafts', 'p4-cache']]
+    ],
+    'Phase 5 - Production Hardening': [
+      ['Performance and Windows integration', ['p5-performance', 'p5-a11y', 'p5-windows']],
+      ['Reliability, delivery and security', ['p5-recovery', 'p5-package', 'p5-security', 'p5-release']]
+    ],
+    'Future Assistant / Celia Workstream': [
+      ['Assistant architecture', ['ai-interface', 'ai-prototype', 'ai-options']],
+      ['Trust and privacy', ['ai-context', 'ai-disclosure']]
+    ]
+  };
+
+  const checkbox = checked => {
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.checked = checked;
+    input.tabIndex = -1;
+    return input;
+  };
+
+  const summary = (title, checked, className) => {
+    const el = document.createElement('summary');
+    el.append(checkbox(checked));
+    const text = document.createElement('span');
+    text.className = className;
+    text.textContent = title;
+    el.append(text);
+    return el;
+  };
+
+  const children = () => {
+    const el = document.createElement('div');
+    el.className = 'tree-children';
+    return el;
+  };
+
+  const prepareNode = label => {
+    label.className = 'tree-node';
+    return label;
+  };
+
+  const appendGrouped = (container, labels, sectionTitle, completeState) => {
+    const remaining = new Map(labels.map(label => [label.querySelector('input').id, label]));
+    for (const [groupTitle, ids] of (groups[sectionTitle] || [])) {
+      const matches = ids.map(id => remaining.get(id)).filter(Boolean);
+      if (!matches.length) continue;
+      matches.forEach(label => remaining.delete(label.querySelector('input').id));
+      const group = document.createElement('details');
+      group.className = 'subbranch';
+      group.open = true;
+      group.append(summary(groupTitle, completeState, 'subbranch-title'));
+      const groupChildren = children();
+      matches.forEach(label => groupChildren.append(prepareNode(label)));
+      group.append(groupChildren);
+      container.append(group);
+    }
+    remaining.forEach(label => container.append(prepareNode(label)));
+  };
+
+  const root = document.createElement('details');
+  root.className = 'root';
+  root.open = true;
+  root.append(summary('Overall', false, 'branch-title'));
+  const rootChildren = children();
+
+  for (const section of sections) {
+    const title = section.querySelector('h2').textContent.trim();
+    const labels = Array.from(section.querySelectorAll(':scope > label'));
+    const completed = labels.filter(label => label.querySelector('input').checked);
+    const pending = labels.filter(label => !label.querySelector('input').checked);
+
+    const branch = document.createElement('details');
+    branch.className = 'branch';
+    branch.open = true;
+    branch.append(summary(title, pending.length === 0, 'branch-title'));
+    const branchChildren = children();
+
+    if (completed.length) {
+      const done = document.createElement('details');
+      done.className = 'completed';
+      done.append(summary(`Completed (${completed.length})`, true, 'subbranch-title'));
+      const doneChildren = children();
+      appendGrouped(doneChildren, completed, title, true);
+      done.append(doneChildren);
+      branchChildren.append(done);
+    }
+
+    if (pending.length) {
+      appendGrouped(branchChildren, pending, title, false);
+    }
+
+    branch.append(branchChildren);
+    rootChildren.append(branch);
+  }
+
+  const productionReady = overall.querySelector('#overall-prod').closest('label');
+  productionReady.className = 'tree-final';
+  rootChildren.append(productionReady);
+  root.append(rootChildren);
+
+  grid.innerHTML = '';
+  grid.append(root);
+  grid.classList.add('tree-view');
 
   let lastPublishedHtml = null;
   const pollForUpdate = async () => {
     if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
     try {
-      const separator = location.search ? '&' : '?';
-      const response = await fetch(`${location.href}${separator}status_check=${Date.now()}`, { cache: 'no-store' });
+      const url = new URL(location.href);
+      url.searchParams.set('status_check', Date.now().toString());
+      const response = await fetch(url.toString(), { cache: 'no-store' });
       if (!response.ok) return;
       const html = await response.text();
       if (lastPublishedHtml === null) {

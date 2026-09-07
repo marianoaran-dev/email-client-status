@@ -257,7 +257,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 7 Sep 2026, 3:13 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 7 Sep 2026, 5:46 PM AEST</span></label>
     </section>
 
     <section>
@@ -273,13 +273,14 @@
 
     <section>
       <h2>Phase 4 - Mail Services and Persistence</h2>
-      <label><input id="p4-accounts" type="checkbox"><span>Production account service</span></label>
-      <label><input id="p4-folders" type="checkbox"><span>Production folder/mailbox service</span></label>
-      <label><input id="p4-messages" type="checkbox"><span>Production message retrieval service</span></label>
-      <label><input id="p4-send" type="checkbox"><span>Real email sending service</span></label>
-      <label><input id="p4-drafts" type="checkbox"><span>Provider-backed durable drafts</span></label>
-      <label><input id="p4-cache" type="checkbox"><span>Caching and indexing strategy</span></label>
-      <label><input id="p4-auth" type="checkbox"><span>Provider authentication/OAuth</span></label>
+      <label><input id="p4-accounts" type="checkbox" checked><span>Encrypted production accounts and fresh-install onboarding</span></label>
+      <label><input id="p4-folders" type="checkbox" checked><span>Dynamic provider folder/mailbox service</span></label>
+      <label><input id="p4-messages" type="checkbox" checked><span>Production message retrieval, attachments and provider mutations</span></label>
+      <label><input id="p4-send" type="checkbox" checked><span>Real SMTP sending with durable ambiguity and safe-retry semantics</span></label>
+      <label><input id="p4-drafts" type="checkbox" checked><span>Provider-backed durable drafts with retry and restart recovery</span></label>
+      <label><input id="p4-cache" type="checkbox" checked><span>Local cache, privacy-aware FTS5 index and background refresh</span></label>
+      <label><input id="p4-auth" type="checkbox" checked><span>OAuth 2.0 PKCE authentication and token refresh</span></label>
+      <label><input id="p4-validation" type="checkbox" checked><span>Phase 4 validation: Release 0 warnings/0 errors, 223/223 managed checks including 40/40 Phase 4 regressions</span></label>
     </section>
 
     <section>
@@ -326,7 +327,7 @@
     ],
     'Phase 4 - Mail Services and Persistence': [
       ['Accounts and mailbox', ['p4-accounts', 'p4-folders', 'p4-auth']],
-      ['Messages and persistence', ['p4-messages', 'p4-send', 'p4-drafts', 'p4-cache']]
+      ['Messages and persistence', ['p4-messages', 'p4-send', 'p4-drafts', 'p4-cache', 'p4-validation']]
     ],
     'Phase 5 - Production Hardening': [
       ['Performance and Windows integration', ['p5-performance', 'p5-a11y', 'p5-windows']],

@@ -256,7 +256,8 @@
       <label><input id="status-auto-refresh" type="checkbox" checked><span>Open dashboard automatically refreshes when a newer version is published</span></label>
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 7 Sep 2026, 2:39 PM AEST</span></label>
+      <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 7 Sep 2026, 2:41 PM AEST</span></label>
     </section>
 
     <section>
@@ -427,6 +428,30 @@
   grid.innerHTML = '';
   grid.append(root);
   grid.classList.add('tree-view');
+
+  const prefixLine = (line, reference) => {
+    const text = line.querySelector(':scope > span:last-child');
+    if (text) text.textContent = `${reference}  ${text.textContent}`;
+  };
+
+  const numberChildren = (container, prefix) => {
+    const items = Array.from(container.children).filter(item =>
+      item.matches('details.branch, details.subbranch, details.completed, label.tree-node, label.tree-final')
+    );
+    items.forEach((item, index) => {
+      const reference = `${prefix}.${index + 1}`;
+      if (item.matches('details')) {
+        prefixLine(item.querySelector(':scope > summary'), reference);
+        const nested = item.querySelector(':scope > .tree-children');
+        if (nested) numberChildren(nested, reference);
+      } else {
+        prefixLine(item, reference);
+      }
+    });
+  };
+
+  prefixLine(root.querySelector(':scope > summary'), '1');
+  numberChildren(rootChildren, '1');
 
   let lastPublishedHtml = null;
   const pollForUpdate = async () => {

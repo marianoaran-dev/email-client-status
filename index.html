@@ -273,7 +273,7 @@
       <h2>Tauri / React Migration</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 58 Present, 16 Partial and 26 Missing</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 60 Present, 14 Partial and 26 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
@@ -370,7 +370,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 9 Sep 2026, 4:21 AM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 9 Sep 2026, 8:37 AM AEST</span></label>
     </section>
 
     <section>
@@ -422,7 +422,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>58 Present, 16 Partial, 26 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
+    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>60 Present, 14 Partial, 26 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -825,8 +825,8 @@
     ['FN-126','Functionality','Rules','Safe-sender / allow list','Missing','Useful when spam filters overreach.','Nice-to-have'],
     ['FN-127','Functionality','Rules','Automatic forwarding rule','Missing','Common but security-sensitive; should be explicit and auditable.','Nice-to-have'],
 
-    ['FN-128','Functionality','Attachments','Attachment download progress','Partial','Large files need visible progress and state.','Essential'],
-    ['FN-129','Functionality','Attachments','Cancel/retry failed attachment downloads','Partial','Network failures should not force reopening the message.','Essential'],
+    ['FN-128','Functionality','Attachments','Attachment download progress','Present','Reader attachment saves now use a pollable backend operation with explicit queued, percentage-progress, completed, failed and cancelled states.','Essential'],
+    ['FN-129','Functionality','Attachments','Cancel/retry failed attachment downloads','Present','Reader downloads can be cancelled through a backend token, discard partial output atomically, and retry failed or cancelled operations to the selected destination.','Essential'],
     ['FN-130','Functionality','Attachments','Save all attachments','Present','Reduces repetitive file operations.','Essential'],
     ['FN-131','Functionality','Attachments','All-attachments library across mail','Missing','eM Client and HEY make files directly discoverable without first finding the email.','Premium'],
     ['FN-132','Functionality','Attachments','Safe-open boundary / risky file warning','Partial','Attachments are hostile input and should never open without appropriate Windows safety semantics.','Must-have'],

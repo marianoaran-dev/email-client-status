@@ -273,15 +273,15 @@
       <h2>Future Tauri UI Redesign</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 31 Present, 30 Partial and 39 Missing</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 35 Present, 31 Partial and 34 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
       <label><input id="tauri-bridge" type="checkbox" checked><span>Existing .NET mail/OAuth/DPAPI/SQLite runtime retained behind a bundled, restartable NDJSON sidecar bridge with draft-safe shutdown</span></label>
       <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions and account Settings are state-bound in React</span></label>
-      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 27 bridge checks, 22 React tests and 6 Rust relay tests pass; full .NET regression/service harness, Tauri debug build, prior native launch and sidecar parent-exit cleanup validated</span></label>
+      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 28 bridge checks, 28 React tests and 6 Rust relay tests pass; full .NET regression/service harness, Tauri debug build, prior native launch and sidecar parent-exit cleanup validated</span></label>
       <label><input id="tauri-checkpoint" type="checkbox" checked><span>Clean local Tauri migration checkpoint created for Astra independent review: 099675beca2fb5a04ed2753e25dcac7a12326f19</span></label>
-      <label><input id="tauri-compose-rich" type="checkbox"><span>Finish rich Compose: HTML editor, formatting toolbar, spellcheck, clean paste, inline images, attachment drag/drop and send-time validation</span></label>
+      <label><input id="tauri-compose-rich" type="checkbox"><span>Finish remaining rich Compose: inline images, attachment drag/drop, provider-aware size limits, complete existing-link editing, Send Later and Undo Send; durable HTML/plain drafts, formatting, clean paste and send-time recipient/subject/attachment checks are implemented</span></label>
       <label><input id="tauri-reader-remaining" type="checkbox"><span>Finish Reader extras: complete recipient details, production print/EML, unsubscribe, suspicious-link treatment, blocked sender/junk controls and optional pop-out reader</span></label>
       <label><input id="tauri-search-rules" type="checkbox"><span>Finish advanced search and organisation: cross-account filters/chips, rules, blocked senders, cache repair and saved workflows</span></label>
       <label><input id="tauri-contacts-calendar" type="checkbox"><span>Add contacts/groups and calendar invitation display plus RSVP/update handling</span></label>
@@ -347,7 +347,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 2:35 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 2:45 PM AEST</span></label>
     </section>
 
     <section>
@@ -399,7 +399,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>31 Present, 30 Partial, 39 Missing</strong>. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
+    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>35 Present, 31 Partial, 34 Missing</strong>. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -730,12 +730,12 @@
     ['FN-068','Functionality','Compose','Recipient autocomplete from history / contacts','Partial','Manual retyping of addresses is unacceptable in daily use.','Must-have'],
     ['FN-069','Functionality','Compose','Contact groups / distribution lists','Missing','Routine group communication should not require repeated recipient entry.','Essential'],
     ['FN-070','Functionality','Compose','Plain-text compose mode','Present','Standards-friendly baseline and accessibility fallback.','Basic'],
-    ['FN-071','Functionality','Compose','Rich-text HTML compose','Missing','Most mainstream users expect styled email composition.','Must-have'],
-    ['FN-072','Functionality','Compose','Formatting toolbar with headings, lists, links and quotes','Missing','Rich text needs a restrained, predictable command set.','Essential'],
+    ['FN-071','Functionality','Compose','Rich-text HTML compose','Present','Rich drafts now persist HTML plus a plain-text fallback and send as multipart/alternative through the production mail boundary.','Must-have'],
+    ['FN-072','Functionality','Compose','Formatting toolbar with headings, lists, links and quotes','Present','The live rich editor now applies heading, list, link, quote, bold and italic formatting instead of showing inert controls.','Essential'],
     ['FN-073','Functionality','Compose','Spellcheck','Partial','A professional composer should catch common spelling errors.','Must-have'],
     ['FN-074','Functionality','Compose','Grammar assistance','Missing','Helpful but can remain optional and local/provider-neutral.','Nice-to-have'],
     ['FN-075','Functionality','Compose','Undo / redo editing','Partial','Basic text-editing recovery is expected.','Basic'],
-    ['FN-076','Functionality','Compose','Clean paste from web/Office with formatting normalisation','Missing','Pasted content is a frequent source of ugly or unsafe HTML.','Must-have'],
+    ['FN-076','Functionality','Compose','Clean paste from web/Office with formatting normalisation','Present','Pasted HTML is normalised to a restrained safe compose vocabulary and retains a deterministic plain-text fallback.','Must-have'],
     ['FN-077','Functionality','Compose','Inline image insertion','Missing','Common for screenshots, signatures and explanatory mail.','Essential'],
     ['FN-078','Functionality','Compose','Add file attachments','Present','Core compose capability.','Basic'],
     ['FN-079','Functionality','Compose','Drag/drop attachments into compose','Missing','Direct desktop interaction reduces friction.','Essential'],
@@ -753,9 +753,9 @@
     ['FN-091','Functionality','Compose','Provider-backed draft synchronisation','Present','Drafts should survive on the server and other devices.','Must-have'],
     ['FN-092','Functionality','Compose','Missing attachment warning','Present','If the message says an attachment exists, the client should catch likely omissions.','Premium'],
     ['FN-093','Functionality','Compose','Missing subject warning','Present','Simple pre-send safeguard against a common error.','Essential'],
-    ['FN-094','Functionality','Compose','Duplicate / malformed recipient warning','Missing','Addressing mistakes should be caught before send.','Must-have'],
+    ['FN-094','Functionality','Compose','Duplicate / malformed recipient warning','Present','Send-time validation blocks malformed and duplicate recipients across To, Cc and Bcc before submission.','Must-have'],
     ['FN-095','Functionality','Compose','External-recipient warning for work accounts','Missing','Useful data-loss prevention for corporate users.','Nice-to-have'],
-    ['FN-096','Functionality','Compose','Link insert/edit with visible destination','Missing','Links need clear authoring and review before send.','Essential'],
+    ['FN-096','Functionality','Compose','Link insert/edit with visible destination','Partial','Safe http, https and mailto destinations can now be inserted explicitly; editing an existing link in place remains to be completed.','Essential'],
     ['FN-097','Functionality','Compose','Reply-To field','Missing','Needed for advanced identities, lists and business workflows.','Nice-to-have'],
 
     ['FN-098','Functionality','Triage','Archive','Present','Core inbox-management action.','Basic'],

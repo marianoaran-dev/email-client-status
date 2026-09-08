@@ -273,7 +273,7 @@
       <h2>Tauri / React Migration</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 42 Present, 30 Partial and 28 Missing</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 43 Present, 29 Partial and 28 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
@@ -287,12 +287,13 @@
       <label><input id="tauri-compose-foundation" type="checkbox" checked><span>Rich Compose foundation implemented: durable HTML/plain drafts, formatting toolbar, clean paste, safe link insert/edit/remove and multipart/alternative mail generation</span></label>
       <label><input id="tauri-compose-media" type="checkbox" checked><span>Compose media handling implemented: file attachments, native drag/drop and durable inline images with private draft storage, CID references and multipart/related MIME</span></label>
       <label><input id="tauri-compose-safety" type="checkbox" checked><span>Compose send-safety implemented: recipient validation, subject/attachment warnings and explicit uncertain-delivery retry protection</span></label>
+      <label><input id="tauri-compose-limits" type="checkbox" checked><span>Provider-aware attachment size handling implemented: personal Gmail/Outlook.com advisories, organisation-controlled Workspace/Microsoft 365 guidance, aggregate attachment warnings and authoritative SMTP SIZE preflight before submission</span></label>
       <label><input id="tauri-reader-core" type="checkbox" checked><span>Reader core implemented: safe HTML/plain rendering, remote-image privacy, thread expansion, Reply/Reply all/Forward and attachment handling</span></label>
       <label><input id="tauri-search-core" type="checkbox" checked><span>Search core implemented: fast local indexed/body search, offline cache search, normal search and Compose reference search</span></label>
       <label><input id="tauri-offline-core" type="checkbox" checked><span>Offline/sync foundation implemented: local cache, offline draft composition and background refresh/recovery primitives</span></label>
       <label><input id="tauri-security-core" type="checkbox" checked><span>Core trust boundaries implemented: hostile-HTML sanitisation, remote-image blocking, encrypted credentials/tokens, fail-closed TLS and privacy-safe diagnostics</span></label>
 
-      <label><input id="tauri-compose-limits" type="checkbox"><span>Finish provider-aware attachment size limits and oversized-attachment recovery/cloud-link strategy</span></label>
+      <label><input id="tauri-compose-cloud-link" type="checkbox"><span>Add oversized-attachment recovery and optional cloud-link strategy</span></label>
       <label><input id="tauri-compose-send-later" type="checkbox"><span>Add Send Later / scheduled send</span></label>
       <label><input id="tauri-compose-undo-send" type="checkbox"><span>Add configurable Undo Send delay</span></label>
       <label><input id="tauri-compose-editor-acceptance" type="checkbox"><span>Finish editor tail: conservative spellcheck/native undo-redo acceptance plus clipboard image/file insertion</span></label>
@@ -367,7 +368,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 5:47 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 8:27 PM AEST</span></label>
     </section>
 
     <section>
@@ -419,7 +420,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>42 Present, 30 Partial, 28 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
+    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>43 Present, 29 Partial, 28 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -478,10 +479,10 @@
     'Tauri / React Migration': [
       ['Design and selected scope', ['tauri-target', 'tauri-spec', 'tauri-approved', 'tauri-prototype', 'tauri-evidence']],
       ['Migration foundation and Astra acceptance', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation', 'tauri-checkpoint', 'tauri-astra-remediation']],
-      ['Compose implemented', ['tauri-compose-foundation', 'tauri-compose-media', 'tauri-compose-safety']],
+      ['Compose implemented', ['tauri-compose-foundation', 'tauri-compose-media', 'tauri-compose-safety', 'tauri-compose-limits']],
       ['Mail foundations implemented', ['tauri-reader-core', 'tauri-search-core', 'tauri-offline-core', 'tauri-security-core']],
       ['Rules implemented', ['tauri-rules-local']],
-      ['Compose — remaining', ['tauri-compose-limits', 'tauri-compose-send-later', 'tauri-compose-undo-send', 'tauri-compose-editor-acceptance']],
+      ['Compose — remaining', ['tauri-compose-cloud-link', 'tauri-compose-send-later', 'tauri-compose-undo-send', 'tauri-compose-editor-acceptance']],
       ['Reader — remaining', ['tauri-reader-details', 'tauri-reader-files', 'tauri-reader-trust', 'tauri-reader-popout']],
       ['Search and rules — remaining', ['tauri-search-advanced', 'tauri-rules']],
       ['Contacts, calendar, sync and notifications — remaining', ['tauri-contacts-calendar', 'tauri-sync-notify']],
@@ -771,7 +772,7 @@
     ['FN-078','Functionality','Compose','Add file attachments','Present','Core compose capability.','Basic'],
     ['FN-079','Functionality','Compose','Drag/drop attachments into compose','Present','Native Tauri file-drop events now import dropped files into the durable draft and show the compose drag overlay.','Essential'],
     ['FN-080','Functionality','Compose','Paste image/file from clipboard as attachment','Missing','Screenshots are frequently added directly from the clipboard.','Premium'],
-    ['FN-081','Functionality','Compose','Large attachment warning and size limits','Partial','Prevent avoidable send failures and confusing provider rejections.','Must-have'],
+    ['FN-081','Functionality','Compose','Large attachment warning and size limits','Present','Compose now warns on aggregate provider limits where known, distinguishes personal Gmail/Outlook.com from organisation-controlled Workspace/Microsoft 365 limits, and checks the SMTP server\u2019s advertised SIZE maximum before submission with base64 expansion accounted for.','Must-have'],
     ['FN-082','Functionality','Compose','Cloud-link option for oversized attachments','Missing','Useful where providers reject large messages, but introduces service dependencies.','Nice-to-have'],
     ['FN-083','Functionality','Compose','Signatures','Present','Expected in both personal and business mail.','Must-have'],
     ['FN-084','Functionality','Compose','Templates / snippets / Quick Text','Missing','Spark, eM Client and HEY demonstrate the value of reusable responses.','Premium'],

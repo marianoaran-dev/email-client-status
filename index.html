@@ -273,15 +273,16 @@
       <h2>Tauri / React Migration</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 38 Present, 30 Partial and 32 Missing</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 42 Present, 30 Partial and 28 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
       <label><input id="tauri-bridge" type="checkbox" checked><span>Existing .NET mail/OAuth/DPAPI/SQLite runtime retained behind a bundled, restartable NDJSON sidecar bridge with draft-safe shutdown</span></label>
-      <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions and account Settings are state-bound in React</span></label>
-      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 50 bridge checks, 41 React tests, 259 managed regression/service checks and 7 Rust relay tests pass on the current Rich Compose tree; frontend lint/build and the complete Tauri debug installer build are validated</span></label>
+      <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions, local Rules/Blocked Senders and account Settings are state-bound in React</span></label>
+      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 51 bridge checks, 48 React tests, 48 focused Rules checks, 261 managed regression/service checks and 7 Rust relay tests pass on the combined Rich Compose + Rules tree; frontend lint/build and the complete Tauri debug installer build are validated</span></label>
       <label><input id="tauri-checkpoint" type="checkbox" checked><span>Clean local Tauri migration checkpoint created for Astra independent review: 099675beca2fb5a04ed2753e25dcac7a12326f19</span></label>
       <label><input id="tauri-astra-remediation" type="checkbox" checked><span>Astra's six-finding migration remediation cycle is accepted. Clean remediation commit 083ee9d29ac8d0dc9411e0e0b9b84dc2040c94ae preserves dirty drafts/workspaces safely through OAuth completion, aborts recomposition on local persistence failure, restores cancellation after navigating away/back from Accounts, and retains the earlier uncertain-send, native window, OAuth watchdog and IMAP thread-grouping fixes</span></label>
+      <label><input id="tauri-rules-local" type="checkbox" checked><span>Local Rules + Blocked Senders implemented and independently isolated at commit 5b0a344: persisted account/source-folder rules, move/tag/read/flag/delete actions, deterministic terminal conflict handling, exact blocked addresses, durable no-replay receipts and safe Gmail-label/source binding are integrated into the live tree</span></label>
 
       <label><input id="tauri-compose-foundation" type="checkbox" checked><span>Rich Compose foundation implemented: durable HTML/plain drafts, formatting toolbar, clean paste, safe link insert/edit/remove and multipart/alternative mail generation</span></label>
       <label><input id="tauri-compose-media" type="checkbox" checked><span>Compose media handling implemented: file attachments, native drag/drop and durable inline images with private draft storage, CID references and multipart/related MIME</span></label>
@@ -302,7 +303,7 @@
       <label><input id="tauri-reader-popout" type="checkbox"><span>Add optional pop-out Reader</span></label>
 
       <label><input id="tauri-search-advanced" type="checkbox"><span>Finish advanced search: complete cross-account search, operators/filter chips, attachment search, search history and saved searches</span></label>
-      <label><input id="tauri-rules" type="checkbox"><span>Add rules and organisation workflows: local/provider rules, blocked/safe senders, deterministic rule ordering and cache repair/re-index</span></label>
+      <label><input id="tauri-rules" type="checkbox"><span>Finish remaining organisation workflows: provider-side rules where available, safe-sender/allow list, automatic forwarding and cache repair/re-index</span></label>
       <label><input id="tauri-contacts-calendar" type="checkbox"><span>Add contacts/groups/provider directory integration and calendar invitation display, RSVP and update handling</span></label>
       <label><input id="tauri-sync-notify" type="checkbox"><span>Finish offline/sync and notifications: durable offline outbox, bounded retry/sync controls, native notifications and recovery UX</span></label>
       <label><input id="tauri-interoperability" type="checkbox"><span>Add Windows interoperability: default mail/mailto registration, EML integration, settings interchange and remaining desktop drag/export flows</span></label>
@@ -366,7 +367,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 5:28 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 5:45 PM AEST</span></label>
     </section>
 
     <section>
@@ -418,7 +419,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>38 Present, 30 Partial, 32 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
+    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>42 Present, 30 Partial, 28 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -479,6 +480,7 @@
       ['Migration foundation and Astra acceptance', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation', 'tauri-checkpoint', 'tauri-astra-remediation']],
       ['Compose implemented', ['tauri-compose-foundation', 'tauri-compose-media', 'tauri-compose-safety']],
       ['Mail foundations implemented', ['tauri-reader-core', 'tauri-search-core', 'tauri-offline-core', 'tauri-security-core']],
+      ['Rules implemented', ['tauri-rules-local']],
       ['Compose — remaining', ['tauri-compose-limits', 'tauri-compose-send-later', 'tauri-compose-undo-send', 'tauri-compose-editor-acceptance']],
       ['Reader — remaining', ['tauri-reader-details', 'tauri-reader-files', 'tauri-reader-trust', 'tauri-reader-popout']],
       ['Search and rules — remaining', ['tauri-search-advanced', 'tauri-rules']],
@@ -812,11 +814,11 @@
     ['FN-119','Functionality','Search','Attachment content indexing where safe','Missing','Powerful for documents but requires careful privacy/performance boundaries.','Nice-to-have'],
     ['FN-120','Functionality','Search','Offline search from local cache','Present','Core desktop advantage over web-only clients.','Must-have'],
 
-    ['FN-121','Functionality','Rules','Local mail rules / filters','Missing','Automated filing is standard in Outlook, Gmail, Thunderbird, Proton and eM Client.','Must-have'],
+    ['FN-121','Functionality','Rules','Local mail rules / filters','Present','Account- and source-folder-scoped local rules persist in SQLite, are managed through the bridge/Settings UI and execute during production refresh with durable processing receipts.','Must-have'],
     ['FN-122','Functionality','Rules','Provider-side rule support where available','Missing','Server-side rules continue to work when the desktop client is closed.','Premium'],
-    ['FN-123','Functionality','Rules','Rule actions: move, tag, mark read, flag, delete','Missing','These are the minimum useful automation primitives.','Essential'],
-    ['FN-124','Functionality','Rules','Rule ordering and conflict handling','Missing','Complex rule sets need deterministic, inspectable execution.','Essential'],
-    ['FN-125','Functionality','Rules','Blocked senders','Missing','Users need an explicit control beyond spam classification.','Essential'],
+    ['FN-123','Functionality','Rules','Rule actions: move, tag, mark read, flag, delete','Present','Rules execute move, add/remove tag, mark-read, flag and delete through the existing provider mutation boundary; move/delete are terminal and provider failures remain inspectable.','Essential'],
+    ['FN-124','Functionality','Rules','Rule ordering and conflict handling','Present','Rule order is explicit and persisted; non-terminal actions accumulate against imported metadata, while the first move/delete wins and durable receipts prevent unsafe replay after failure or restart.','Essential'],
+    ['FN-125','Functionality','Rules','Blocked senders','Present','Exact per-account blocked addresses are evaluated before ordinary Inbox rules and route mail to the existing Trash folder without a hard-delete fallback.','Essential'],
     ['FN-126','Functionality','Rules','Safe-sender / allow list','Missing','Useful when spam filters overreach.','Nice-to-have'],
     ['FN-127','Functionality','Rules','Automatic forwarding rule','Missing','Common but security-sensitive; should be explicit and auditable.','Nice-to-have'],
 

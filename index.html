@@ -273,9 +273,21 @@
       <h2>Future Tauri UI Redesign</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 31 Present, 30 Partial and 39 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
+      <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
+      <label><input id="tauri-bridge" type="checkbox" checked><span>Existing .NET mail/OAuth/DPAPI/SQLite runtime retained behind a bundled, restartable NDJSON sidecar bridge with draft-safe shutdown</span></label>
+      <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions and account Settings are state-bound in React</span></label>
+      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 27 bridge checks, 22 React tests and 6 Rust relay tests pass; full .NET regression/service harness, Tauri debug build, prior native launch and sidecar parent-exit cleanup validated</span></label>
+      <label><input id="tauri-compose-rich" type="checkbox"><span>Finish rich Compose: HTML editor, formatting toolbar, spellcheck, clean paste, inline images, attachment drag/drop and send-time validation</span></label>
+      <label><input id="tauri-reader-remaining" type="checkbox"><span>Finish Reader extras: complete recipient details, production print/EML, unsubscribe, suspicious-link treatment, blocked sender/junk controls and optional pop-out reader</span></label>
+      <label><input id="tauri-search-rules" type="checkbox"><span>Finish advanced search and organisation: cross-account filters/chips, rules, blocked senders, cache repair and saved workflows</span></label>
+      <label><input id="tauri-contacts-calendar" type="checkbox"><span>Add contacts/groups and calendar invitation display plus RSVP/update handling</span></label>
+      <label><input id="tauri-sync-notify" type="checkbox"><span>Finish offline/sync and notifications: durable offline outbox, bounded retry controls, account/folder notifications and recovery UX</span></label>
+      <label><input id="tauri-interoperability" type="checkbox"><span>Add Windows interoperability: default mail/mailto registration, open/save EML and production print/Print-to-PDF flows</span></label>
+      <label><input id="tauri-security" type="checkbox"><span>Finish security/trust UX: phishing indicators, destructive-action undo/confirmation and provider-aware junk/block controls</span></label>
+      <label><input id="tauri-release" type="checkbox"><span>Complete production acceptance: live-provider/manual gates, screen-reader/high-contrast acceptance, signed installer/update artefacts and sustained real-world mailbox validation</span></label>
       <label><input id="tauri-migration" type="checkbox"><span>Production Tauri/React migration implemented</span></label>
     </section>
 
@@ -334,7 +346,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 9:17 AM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 12:31 PM AEST</span></label>
     </section>
 
     <section>
@@ -386,7 +398,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current research catalogue for the UX/UI polish pass and the later functionality polish pass. Priority and current-state classifications are fixed research judgements. Only the final <strong>Approved/implement</strong> checkboxes are editable, and selections are stored only in this browser.</p>
+    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>31 Present, 30 Partial, 39 Missing</strong>. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -444,7 +456,10 @@
     ],
     'Future Tauri UI Redesign': [
       ['Design and selected scope', ['tauri-target', 'tauri-spec', 'tauri-approved', 'tauri-prototype', 'tauri-evidence']],
-      ['Migration', ['tauri-migration']]
+      ['Migration foundation', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation']],
+      ['Remaining implementation', ['tauri-compose-rich', 'tauri-reader-remaining', 'tauri-search-rules', 'tauri-contacts-calendar', 'tauri-sync-notify', 'tauri-interoperability', 'tauri-security']],
+      ['Acceptance and release', ['tauri-release']],
+      ['Full migration', ['tauri-migration']]
     ]
   };
 
@@ -592,19 +607,19 @@
     ['UX-002','UX/UI','Layout','Two-pane / compact master-detail adaptation','Present','Preserves usability when the window narrows instead of crushing three panes.','Must-have'],
     ['UX-003','UX/UI','Layout','Resizable navigation, list, reader and attachment panes','Present','Lets different users and message types allocate space where it matters.','Essential'],
     ['UX-004','UX/UI','Layout','Persist dragged pane widths','Present','A premium desktop app should remember deliberate workspace adjustments.','Essential'],
-    ['UX-005','UX/UI','Reader','Reader uses available column width with optional comfortable line length','Partial','Readability needs both efficient use of space and user-controlled line length.','Must-have'],
-    ['UX-006','UX/UI','Typography','Segoe UI Variable / native Windows typography direction','Partial','Current Windows guidance recommends Segoe UI Variable for legibility and familiarity.','Must-have'],
-    ['UX-007','UX/UI','Typography','Strong sender, subject, time and metadata hierarchy','Partial','Fast scanning depends more on hierarchy than decorative styling.','Must-have'],
+    ['UX-005','UX/UI','Reader','Reader uses available column width with optional comfortable line length','Present','Readability needs both efficient use of space and user-controlled line length.','Must-have'],
+    ['UX-006','UX/UI','Typography','Segoe UI Variable / native Windows typography direction','Present','Current Windows guidance recommends Segoe UI Variable for legibility and familiarity.','Must-have'],
+    ['UX-007','UX/UI','Typography','Strong sender, subject, time and metadata hierarchy','Present','Fast scanning depends more on hierarchy than decorative styling.','Must-have'],
     ['UX-008','UX/UI','Typography','Reader font family, size, line height and paragraph spacing controls','Present','Long-form email reading benefits from adjustable text presentation.','Premium'],
     ['UX-009','UX/UI','Density','Comfortable, compact and adjustable message-row density','Present','Density should adapt to mailbox volume and user preference.','Essential'],
     ['UX-010','UX/UI','Themes','Porcelain Light and Graphite Dark themes','Present','A coherent light/dark pair is baseline premium desktop polish.','Must-have'],
     ['UX-011','UX/UI','Themes','Custom colour themes with safe contrast boundaries','Present','Personalisation can feel premium when it does not compromise readability.','Premium'],
-    ['UX-012','UX/UI','Iconography','One coherent modern icon language across the app','Partial','Mixed icon styles reduce perceived quality and command recognition.','Must-have'],
+    ['UX-012','UX/UI','Iconography','One coherent modern icon language across the app','Present','Mixed icon styles reduce perceived quality and command recognition.','Must-have'],
     ['UX-013','UX/UI','Iconography','Selective Fluent System Icons adoption','Missing','Microsoft’s MIT-licensed system icon set provides familiar Windows-native semantics.','Premium'],
-    ['UX-014','UX/UI','Commands','Contextual hover quick actions in the message list','Missing','Common triage actions become faster without permanently adding visual noise.','Premium'],
-    ['UX-015','UX/UI','Commands','Progressive disclosure for secondary actions','Partial','Keeps frequent commands visible while moving rare commands into More menus.','Must-have'],
+    ['UX-014','UX/UI','Commands','Contextual hover quick actions in the message list','Present','Common triage actions become faster without permanently adding visual noise.','Premium'],
+    ['UX-015','UX/UI','Commands','Progressive disclosure for secondary actions','Present','Keeps frequent commands visible while moving rare commands into More menus.','Must-have'],
     ['UX-016','UX/UI','Commands','Consistent command placement across list, reader and compose','Partial','Predictability lowers cognitive load and accidental activation.','Must-have'],
-    ['UX-017','UX/UI','Commands','Command palette / universal action launcher','Missing','Keyboard-first products show that a searchable action surface can add speed without clutter.','Premium'],
+    ['UX-017','UX/UI','Commands','Command palette / universal action launcher','Present','Keyboard-first products show that a searchable action surface can add speed without clutter.','Premium'],
     ['UX-018','UX/UI','Keyboard','Complete keyboard traversal of mail, reader, compose and settings','Partial','Desktop power and accessibility both depend on avoiding mouse-only paths.','Must-have'],
     ['UX-019','UX/UI','Keyboard','Discoverable shortcut hints in menus and tooltips','Partial','Shortcuts only improve speed when users can learn them naturally.','Essential'],
     ['UX-020','UX/UI','Keyboard','Customisable keyboard shortcuts','Partial','Power users often have established workflows and muscle memory.','Premium'],
@@ -617,9 +632,9 @@
     ['UX-027','UX/UI','Accessibility','Colour never used as the only state indicator','Partial','Icons, text and shape should reinforce colour-coded states.','Must-have'],
     ['UX-028','UX/UI','Scaling','App zoom, font scaling and DPI-safe reflow','Present','Mail is text-heavy and must remain usable under scaling.','Must-have'],
     ['UX-029','UX/UI','Settings','Settings as a full shell destination with clear categories','Present','Current Windows guidance favours a readable, dedicated Settings destination.','Must-have'],
-    ['UX-030','UX/UI','Settings','Search within Settings','Missing','A broad premium client eventually outgrows category-only navigation.','Premium'],
-    ['UX-031','UX/UI','Settings','Consistent compact controls, toggles, sliders and selects','Partial','Control inconsistency is immediately visible in a polish pass.','Must-have'],
-    ['UX-032','UX/UI','Settings','Reset per section and reset all to defaults','Missing','Deep customisation needs safe recovery from unwanted changes.','Essential'],
+    ['UX-030','UX/UI','Settings','Search within Settings','Present','A broad premium client eventually outgrows category-only navigation.','Premium'],
+    ['UX-031','UX/UI','Settings','Consistent compact controls, toggles, sliders and selects','Present','Control inconsistency is immediately visible in a polish pass.','Must-have'],
+    ['UX-032','UX/UI','Settings','Reset per section and reset all to defaults','Present','Deep customisation needs safe recovery from unwanted changes.','Essential'],
     ['UX-033','UX/UI','Onboarding','Provider-specific onboarding with minimal required fields','Present','Google and Custom flows now avoid unnecessary developer or identity fields.','Must-have'],
     ['UX-034','UX/UI','Onboarding','Polished progress, cancellation and recovery during account setup','Partial','Network/OAuth setup needs calm feedback rather than modal uncertainty.','Essential'],
     ['UX-035','UX/UI','States','Purpose-built empty states for inbox, search, folders and first run','Partial','Empty states should explain what happened and what action is useful next.','Essential'],
@@ -641,45 +656,45 @@
     ['UX-051','UX/UI','Framework','Evaluate a future .NET 10 WPF Fluent-theme baseline before adding a UI framework','Missing','Current WPF has first-party Fluent theming from .NET 9 onward; upgrading deliberately may reduce dependency risk versus a wholesale framework migration.','Nice-to-have'],
 
     ['FN-001','Functionality','Accounts','Multiple mail accounts','Present','A desktop client should manage more than one account reliably.','Basic'],
-    ['FN-002','Functionality','Accounts','Unified Inbox across selected accounts','Missing','Multi-account users expect one optional combined triage surface.','Essential'],
+    ['FN-002','Functionality','Accounts','Unified Inbox across selected accounts','Partial','Multi-account users expect one optional combined triage surface.','Essential'],
     ['FN-003','Functionality','Accounts','Fast per-account switching with restored workspace state','Present','Account switching should not reset navigation or reading context.','Essential'],
-    ['FN-004','Functionality','Accounts','Per-account identity colour / visual marker','Partial','Subtle identity cues reduce wrong-account actions.','Essential'],
+    ['FN-004','Functionality','Accounts','Per-account identity colour / visual marker','Present','Subtle identity cues reduce wrong-account actions.','Essential'],
     ['FN-005','Functionality','Accounts','Google OAuth desktop sign-in','Present','Modern Gmail access requires secure OAuth rather than stored account passwords.','Must-have'],
     ['FN-006','Functionality','Accounts','Microsoft OAuth sign-in','Partial','Corporate and Outlook.com users expect modern Microsoft authentication.','Must-have'],
     ['FN-007','Functionality','Accounts','Custom IMAP/SMTP account setup','Present','Open standards support prevents provider lock-in.','Must-have'],
     ['FN-008','Functionality','Accounts','Automatic IMAP/SMTP settings discovery','Present','Manual server configuration should be the fallback, not the default.','Essential'],
     ['FN-009','Functionality','Accounts','Account health, reconnect and actionable error state','Partial','Authentication expiry and server failures need an obvious recovery path.','Must-have'],
     ['FN-010','Functionality','Accounts','Per-account sync controls and pause/resume','Missing','Users may need to control bandwidth, privacy or problematic accounts.','Nice-to-have'],
-    ['FN-011','Functionality','Accounts','Default sender selection','Partial','New messages should choose a predictable From identity.','Essential'],
-    ['FN-012','Functionality','Accounts','Aliases / Send-as identities','Missing','Power and business users commonly send from aliases.','Premium'],
-    ['FN-013','Functionality','Accounts','Multiple sender identities per account','Missing','Identity choice is distinct from merely having multiple accounts.','Premium'],
-    ['FN-014','Functionality','Accounts','Per-account signature assignment','Missing','Signatures are expected in personal and business mail.','Essential'],
+    ['FN-011','Functionality','Accounts','Default sender selection','Present','New messages should choose a predictable From identity.','Essential'],
+    ['FN-012','Functionality','Accounts','Aliases / Send-as identities','Partial','Power and business users commonly send from aliases.','Premium'],
+    ['FN-013','Functionality','Accounts','Multiple sender identities per account','Present','Identity choice is distinct from merely having multiple accounts.','Premium'],
+    ['FN-014','Functionality','Accounts','Per-account signature assignment','Present','Signatures are expected in personal and business mail.','Essential'],
     ['FN-015','Functionality','Accounts','POP3 legacy account support','Missing','Still useful for legacy providers, but IMAP/OAuth should take priority.','Nice-to-have'],
     ['FN-016','Functionality','Accounts','Exchange/Graph native corporate integration','Missing','Could improve enterprise fidelity beyond generic mail protocols.','Nice-to-have'],
 
     ['FN-017','Functionality','Folders','Inbox, Sent, Drafts, Trash, Archive and Junk mapping','Present','Standard mailbox roles must work even when provider folder names differ.','Basic'],
     ['FN-018','Functionality','Folders','Dynamic provider folders','Present','Real accounts need server folders rather than hard-coded navigation.','Basic'],
-    ['FN-019','Functionality','Folders','Create, rename and delete custom folders','Missing','Traditional desktop clients are expected to manage server folders.','Essential'],
-    ['FN-020','Functionality','Folders','Labels, tags and provider categories','Missing','Gmail labels, Outlook categories and Thunderbird tags are mature organisation patterns.','Essential'],
+    ['FN-019','Functionality','Folders','Create, rename and delete custom folders','Present','Traditional desktop clients are expected to manage server folders.','Essential'],
+    ['FN-020','Functionality','Folders','Labels, tags and provider categories','Partial','Gmail labels and standards-based IMAP keywords are now read, cached and mutable; provider-specific category work remains provider-dependent.','Essential'],
     ['FN-021','Functionality','Folders','Favourite / pinned folders','Present','Frequently used destinations should stay close without expanding all navigation.','Essential'],
-    ['FN-022','Functionality','Folders','Folder unread and total counts','Partial','Counts support scanning but must avoid visual noise.','Essential'],
+    ['FN-022','Functionality','Folders','Folder unread and total counts','Present','Counts support scanning but must avoid visual noise.','Essential'],
     ['FN-023','Functionality','Folders','Custom folder ordering','Missing','Power users often have carefully structured mailboxes.','Nice-to-have'],
-    ['FN-024','Functionality','Folders','Drag-and-drop messages to folders','Missing','Direct manipulation is a core desktop interaction for filing mail.','Essential'],
+    ['FN-024','Functionality','Folders','Drag-and-drop messages to folders','Present','Direct manipulation is a core desktop interaction for filing mail.','Essential'],
     ['FN-025','Functionality','Folders','Saved / smart folders','Missing','Saved criteria reduce repeated search and triage effort.','Premium'],
     ['FN-026','Functionality','Folders','Recent destinations when moving mail','Missing','Recent folders make repeated filing much faster.','Premium'],
 
-    ['FN-027','Functionality','Message list','Read / unread state and toggle','Partial','Backend state exists, but the exact-current UI does not yet expose a complete mark-read/unread workflow.','Basic'],
+    ['FN-027','Functionality','Message list','Read / unread state and toggle','Present','Read/unread state is exposed through row quick actions, Reader commands and bulk actions.','Basic'],
     ['FN-028','Functionality','Message list','Flag / star state and toggle','Present','Fundamental follow-up marker across major clients.','Basic'],
-    ['FN-029','Functionality','Message list','Single selection plus multi-select','Partial','Bulk workflows require robust selection beyond opening one message.','Must-have'],
-    ['FN-030','Functionality','Message list','Bulk archive/delete/read/flag/move actions','Missing','High-volume mail becomes tedious without batch operations.','Must-have'],
+    ['FN-029','Functionality','Message list','Single selection plus multi-select','Present','Bulk workflows require robust selection beyond opening one message.','Must-have'],
+    ['FN-030','Functionality','Message list','Bulk archive/delete/read/flag/move actions','Present','High-volume mail becomes tedious without batch operations.','Must-have'],
     ['FN-031','Functionality','Message list','Sender avatar / initials','Present','A lightweight visual cue can improve scanning when restrained.','Nice-to-have'],
     ['FN-032','Functionality','Message list','Attachment indicator and count','Present','Users should know files are attached before opening a message.','Basic'],
     ['FN-033','Functionality','Message list','Importance / priority marker','Missing','Useful for providers and users that rely on importance metadata.','Nice-to-have'],
     ['FN-034','Functionality','Message list','Date grouping','Missing','Grouping can make long inboxes easier to scan without changing sort order.','Nice-to-have'],
-    ['FN-035','Functionality','Message list','Sort by date, sender, subject, size and attachments','Missing','Desktop clients should support more than one fixed order.','Essential'],
-    ['FN-036','Functionality','Message list','Filter unread, flagged, attachment and date ranges','Missing','Fast filtering complements full search for routine triage.','Essential'],
+    ['FN-035','Functionality','Message list','Sort by date, sender, subject, size and attachments','Present','Desktop clients should support more than one fixed order.','Essential'],
+    ['FN-036','Functionality','Message list','Filter unread, flagged, attachment and date ranges','Present','Fast filtering complements full search for routine triage.','Essential'],
     ['FN-037','Functionality','Message list','Configurable preview/snippet line','Present','Preview text helps triage while density controls limit clutter.','Essential'],
-    ['FN-038','Functionality','Message list','Conversation grouping / thread mode','Partial','Threads reduce duplicate subject rows but need careful provider semantics.','Essential'],
+    ['FN-038','Functionality','Message list','Conversation grouping / thread mode','Present','Conversation rows now group by stable provider/RFC thread identity and aggregate unread, flag and attachment state.','Essential'],
     ['FN-039','Functionality','Message list','Focused / priority inbox mode','Missing','Outlook, Spark and Superhuman show value in optional attention filtering.','Premium'],
     ['FN-040','Functionality','Message list','Pin important messages to top','Missing','Fastmail and Spark use pinning as a simple persistent attention tool.','Premium'],
     ['FN-041','Functionality','Message list','Snooze messages until later','Missing','Gmail, Spark, Fastmail and others make snooze a standard triage tool.','Premium'],
@@ -687,7 +702,7 @@
     ['FN-043','Functionality','Message list','Keyboard row navigation and open/close','Present','Desktop efficiency should not require pointer travel.','Must-have'],
 
     ['FN-044','Functionality','Reader','Conversation / thread history','Present','Readers need previous context without leaving the current message.','Essential'],
-    ['FN-045','Functionality','Reader','Expand/collapse individual messages in a thread','Missing','Long conversations benefit from progressive disclosure.','Essential'],
+    ['FN-045','Functionality','Reader','Expand/collapse individual messages in a thread','Present','Long conversations benefit from progressive disclosure.','Essential'],
     ['FN-046','Functionality','Reader','Trim or collapse quoted reply text','Missing','Repeated quotes are a major source of visual noise in long threads.','Premium'],
     ['FN-047','Functionality','Reader','Sender and recipient detail popover','Partial','Users need full addresses and recipient context without crowding the header.','Essential'],
     ['FN-048','Functionality','Reader','View full headers','Missing','Power users and troubleshooting require raw delivery metadata.','Nice-to-have'],
@@ -698,11 +713,11 @@
     ['FN-053','Functionality','Reader','Attachment inspector','Present','Files should be visible as first-class message content.','Essential'],
     ['FN-054','Functionality','Reader','Save/open individual attachment','Present','Basic attachment handling.','Basic'],
     ['FN-055','Functionality','Reader','Safe attachment preview','Partial','Preview reduces context switching but must preserve a strong trust boundary.','Premium'],
-    ['FN-056','Functionality','Reader','Save all attachments','Missing','Common multi-file messages should not require repetitive saves.','Essential'],
+    ['FN-056','Functionality','Reader','Save all attachments','Present','Common multi-file messages should not require repetitive saves.','Essential'],
     ['FN-057','Functionality','Reader','Drag attachment from mail to Explorer/app','Missing','Desktop users expect direct file movement.','Premium'],
-    ['FN-058','Functionality','Reader','Print message','Missing','Still required for business, records and physical workflows.','Essential'],
+    ['FN-058','Functionality','Reader','Print message','Partial','A Reader print command is wired, but production Windows print/Print-to-PDF acceptance remains.','Essential'],
     ['FN-059','Functionality','Reader','Save message as EML','Missing','Open message interchange and archival are valuable desktop capabilities.','Nice-to-have'],
-    ['FN-060','Functionality','Reader','Reply, Reply all and Forward','Partial','These are core mail actions and need complete provider-backed flows.','Basic'],
+    ['FN-060','Functionality','Reader','Reply, Reply all and Forward','Present','Reply, Reply all and Forward now create correctly addressed/composed drafts through the bridge and production send boundary.','Basic'],
     ['FN-061','Functionality','Reader','Next / previous message commands','Partial','Sequential reading should not require returning to the list each time.','Essential'],
     ['FN-062','Functionality','Reader','Report phishing / junk','Missing','Security actions should be direct and provider-aware.','Must-have'],
     ['FN-063','Functionality','Reader','One-click unsubscribe / list-unsubscribe','Missing','Gmail, Apple and privacy-focused clients reduce newsletter friction this way.','Premium'],
@@ -711,12 +726,12 @@
     ['FN-066','Functionality','Reader','Zoom message content independently of app chrome','Present','Reading comfort should not require scaling the whole interface.','Essential'],
 
     ['FN-067','Functionality','Compose','To, Cc and Bcc fields','Present','Core addressing primitives.','Basic'],
-    ['FN-068','Functionality','Compose','Recipient autocomplete from history / contacts','Missing','Manual retyping of addresses is unacceptable in daily use.','Must-have'],
+    ['FN-068','Functionality','Compose','Recipient autocomplete from history / contacts','Partial','Manual retyping of addresses is unacceptable in daily use.','Must-have'],
     ['FN-069','Functionality','Compose','Contact groups / distribution lists','Missing','Routine group communication should not require repeated recipient entry.','Essential'],
     ['FN-070','Functionality','Compose','Plain-text compose mode','Present','Standards-friendly baseline and accessibility fallback.','Basic'],
     ['FN-071','Functionality','Compose','Rich-text HTML compose','Missing','Most mainstream users expect styled email composition.','Must-have'],
     ['FN-072','Functionality','Compose','Formatting toolbar with headings, lists, links and quotes','Missing','Rich text needs a restrained, predictable command set.','Essential'],
-    ['FN-073','Functionality','Compose','Spellcheck','Missing','A professional composer should catch common spelling errors.','Must-have'],
+    ['FN-073','Functionality','Compose','Spellcheck','Partial','A professional composer should catch common spelling errors.','Must-have'],
     ['FN-074','Functionality','Compose','Grammar assistance','Missing','Helpful but can remain optional and local/provider-neutral.','Nice-to-have'],
     ['FN-075','Functionality','Compose','Undo / redo editing','Partial','Basic text-editing recovery is expected.','Basic'],
     ['FN-076','Functionality','Compose','Clean paste from web/Office with formatting normalisation','Missing','Pasted content is a frequent source of ugly or unsafe HTML.','Must-have'],
@@ -724,19 +739,19 @@
     ['FN-078','Functionality','Compose','Add file attachments','Present','Core compose capability.','Basic'],
     ['FN-079','Functionality','Compose','Drag/drop attachments into compose','Missing','Direct desktop interaction reduces friction.','Essential'],
     ['FN-080','Functionality','Compose','Paste image/file from clipboard as attachment','Missing','Screenshots are frequently added directly from the clipboard.','Premium'],
-    ['FN-081','Functionality','Compose','Large attachment warning and size limits','Missing','Prevent avoidable send failures and confusing provider rejections.','Must-have'],
+    ['FN-081','Functionality','Compose','Large attachment warning and size limits','Partial','Prevent avoidable send failures and confusing provider rejections.','Must-have'],
     ['FN-082','Functionality','Compose','Cloud-link option for oversized attachments','Missing','Useful where providers reject large messages, but introduces service dependencies.','Nice-to-have'],
-    ['FN-083','Functionality','Compose','Signatures','Missing','Expected in both personal and business mail.','Must-have'],
+    ['FN-083','Functionality','Compose','Signatures','Present','Expected in both personal and business mail.','Must-have'],
     ['FN-084','Functionality','Compose','Templates / snippets / Quick Text','Missing','Spark, eM Client and HEY demonstrate the value of reusable responses.','Premium'],
-    ['FN-085','Functionality','Compose','From identity / alias chooser','Missing','Required once aliases or multiple identities exist.','Premium'],
+    ['FN-085','Functionality','Compose','From identity / alias chooser','Present','Required once aliases or multiple identities exist.','Premium'],
     ['FN-086','Functionality','Compose','Message priority / importance','Missing','Legacy but still relevant in some business workflows.','Nice-to-have'],
     ['FN-087','Functionality','Compose','Read receipt / delivery receipt request','Missing','Useful in some business contexts, but provider support is inconsistent.','Nice-to-have'],
     ['FN-088','Functionality','Compose','Schedule send / Send later','Missing','Now standard across Gmail, Apple Mail, Outlook, Spark, Proton, Fastmail and others.','Must-have'],
     ['FN-089','Functionality','Compose','Undo Send delay','Missing','A short configurable send delay prevents common mistakes.','Must-have'],
     ['FN-090','Functionality','Compose','Durable local draft autosave','Present','No typed work should disappear through navigation or restart.','Must-have'],
     ['FN-091','Functionality','Compose','Provider-backed draft synchronisation','Present','Drafts should survive on the server and other devices.','Must-have'],
-    ['FN-092','Functionality','Compose','Missing attachment warning','Missing','If the message says an attachment exists, the client should catch likely omissions.','Premium'],
-    ['FN-093','Functionality','Compose','Missing subject warning','Missing','Simple pre-send safeguard against a common error.','Essential'],
+    ['FN-092','Functionality','Compose','Missing attachment warning','Present','If the message says an attachment exists, the client should catch likely omissions.','Premium'],
+    ['FN-093','Functionality','Compose','Missing subject warning','Present','Simple pre-send safeguard against a common error.','Essential'],
     ['FN-094','Functionality','Compose','Duplicate / malformed recipient warning','Missing','Addressing mistakes should be caught before send.','Must-have'],
     ['FN-095','Functionality','Compose','External-recipient warning for work accounts','Missing','Useful data-loss prevention for corporate users.','Nice-to-have'],
     ['FN-096','Functionality','Compose','Link insert/edit with visible destination','Missing','Links need clear authoring and review before send.','Essential'],
@@ -777,13 +792,13 @@
 
     ['FN-128','Functionality','Attachments','Attachment download progress','Partial','Large files need visible progress and state.','Essential'],
     ['FN-129','Functionality','Attachments','Cancel/retry failed attachment downloads','Partial','Network failures should not force reopening the message.','Essential'],
-    ['FN-130','Functionality','Attachments','Save all attachments','Missing','Reduces repetitive file operations.','Essential'],
+    ['FN-130','Functionality','Attachments','Save all attachments','Present','Reduces repetitive file operations.','Essential'],
     ['FN-131','Functionality','Attachments','All-attachments library across mail','Missing','eM Client and HEY make files directly discoverable without first finding the email.','Premium'],
     ['FN-132','Functionality','Attachments','Safe-open boundary / risky file warning','Partial','Attachments are hostile input and should never open without appropriate Windows safety semantics.','Must-have'],
     ['FN-133','Functionality','Attachments','Mark Internet-origin files for Windows protection','Missing','Zone-of-origin metadata can improve downstream Windows/Office safety.','Premium'],
     ['FN-134','Functionality','Attachments','Malware scanning integration boundary','Missing','Useful for premium safety, ideally leveraging OS/security-provider capabilities.','Nice-to-have'],
 
-    ['FN-135','Functionality','Contacts','Recent-recipient autocomplete store','Missing','Fast addressing should improve naturally with use.','Must-have'],
+    ['FN-135','Functionality','Contacts','Recent-recipient autocomplete store','Partial','Fast addressing should improve naturally with use.','Must-have'],
     ['FN-136','Functionality','Contacts','Windows / provider contacts integration','Missing','Address books remain a standard companion to mail.','Essential'],
     ['FN-137','Functionality','Contacts','Contact cards with recent mail history','Missing','Fastmail and Outlook-style people context can reduce search effort.','Premium'],
     ['FN-138','Functionality','Contacts','Contact groups','Missing','Required for recurring group communication.','Essential'],
@@ -856,12 +871,12 @@
     ['FN-198','Functionality','Premium workflow','Delivery schedules for nonurgent mail','Missing','Shortwave demonstrates batching incoming mail to reduce interruption.','Nice-to-have'],
     ['FN-199','Functionality','Premium workflow','Private notes/memos on messages','Missing','Fastmail-style notes keep personal context attached to a thread without sending it.','Nice-to-have'],
     ['FN-200','Functionality','Premium workflow','Multi-level undo for mailbox actions','Missing','Fastmail demonstrates a strong trust pattern beyond single-action undo.','Premium'],
-    ['FN-201','Functionality','Premium workflow','Command palette for navigation and actions','Missing','A searchable command surface supports keyboard speed without hiding features permanently.','Premium'],
+    ['FN-201','Functionality','Premium workflow','Command palette for navigation and actions','Present','A searchable command surface supports keyboard speed without hiding features permanently.','Premium'],
     ['FN-202','Functionality','Premium workflow','Optional custom inbox sections by sender/query/category','Missing','Lets users adapt attention management without forcing a universal smart inbox.','Premium'],
     ['FN-203','Functionality','Premium workflow','One-click block and unsubscribe','Missing','Shortwave and privacy-focused clients combine two frequent cleanup actions effectively.','Premium'],
     ['FN-204','Functionality','Premium workflow','Saved sender/contact views with mail history','Missing','Quick person-centric navigation complements folder-centric mail.','Premium'],
     ['FN-205','Functionality','Premium workflow','Optional AI features kept outside core mail dependency','Present','The product already preserves a provider-neutral assistant boundary; core email remains excellent without AI.','Nice-to-have'],
-    ['FN-206','Functionality','Message list','Move selected message to another folder from the UI','Partial','Provider move support exists, but the exact-current UI does not yet expose the complete move workflow.','Essential'],
+    ['FN-206','Functionality','Message list','Move selected message to another folder from the UI','Present','Move is exposed from Reader/list controls and direct drag-and-drop folder targets.','Essential'],
     ['FN-207','Functionality','Reader','Pop out message into a separate reader window','Missing','Useful for multi-monitor reference work, but should remain optional rather than the default reading model.','Nice-to-have']
   ];
 

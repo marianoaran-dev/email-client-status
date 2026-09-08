@@ -273,7 +273,7 @@
       <h2>Tauri / React Migration</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 63 Present, 11 Partial and 26 Missing</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 64 Present, 12 Partial and 24 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
@@ -370,7 +370,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 9 Sep 2026, 9:13 AM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 9 Sep 2026, 9:27 AM AEST</span></label>
     </section>
 
     <section>
@@ -422,7 +422,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>63 Present, 11 Partial, 26 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
+    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>64 Present, 12 Partial, 24 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -762,7 +762,7 @@
 
     ['FN-067','Functionality','Compose','To, Cc and Bcc fields','Present','Core addressing primitives.','Basic'],
     ['FN-068','Functionality','Compose','Recipient autocomplete from history / contacts','Partial','Manual retyping of addresses is unacceptable in daily use.','Must-have'],
-    ['FN-069','Functionality','Compose','Contact groups / distribution lists','Missing','Routine group communication should not require repeated recipient entry.','Essential'],
+    ['FN-069','Functionality','Compose','Contact groups / distribution lists','Present','Compose resolves saved local group names through the existing recipient suggestion surface and expands their normalized member addresses into the durable draft.','Essential'],
     ['FN-070','Functionality','Compose','Plain-text compose mode','Present','Standards-friendly baseline and accessibility fallback.','Basic'],
     ['FN-071','Functionality','Compose','Rich-text HTML compose','Present','Rich drafts now persist HTML plus a plain-text fallback and send as multipart/alternative through the production mail boundary.','Must-have'],
     ['FN-072','Functionality','Compose','Formatting toolbar with headings, lists, links and quotes','Present','The live rich editor now applies heading, list, link, quote, bold and italic formatting instead of showing inert controls.','Essential'],
@@ -836,7 +836,7 @@
     ['FN-135','Functionality','Contacts','Recent-recipient autocomplete store','Partial','Fast addressing should improve naturally with use.','Must-have'],
     ['FN-136','Functionality','Contacts','Windows / provider contacts integration','Missing','Address books remain a standard companion to mail.','Essential'],
     ['FN-137','Functionality','Contacts','Contact cards with recent mail history','Missing','Fastmail and Outlook-style people context can reduce search effort.','Premium'],
-    ['FN-138','Functionality','Contacts','Contact groups','Missing','Required for recurring group communication.','Essential'],
+    ['FN-138','Functionality','Contacts','Contact groups','Present','Contacts settings creates, edits and removes durable local groups with normalized, deduplicated membership that survives restart.','Essential'],
     ['FN-139','Functionality','Contacts','vCard import/export','Missing','Open interchange remains useful for business contacts.','Nice-to-have'],
     ['FN-140','Functionality','Contacts','Corporate directory lookup','Missing','Important for Microsoft/enterprise environments.','Nice-to-have'],
     ['FN-141','Functionality','Contacts','Duplicate contact detection / merge','Missing','Useful once the app owns contact data rather than only provider lookup.','Nice-to-have'],

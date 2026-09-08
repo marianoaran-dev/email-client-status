@@ -280,6 +280,7 @@
       <label><input id="tauri-bridge" type="checkbox" checked><span>Existing .NET mail/OAuth/DPAPI/SQLite runtime retained behind a bundled, restartable NDJSON sidecar bridge with draft-safe shutdown</span></label>
       <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions and account Settings are state-bound in React</span></label>
       <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 27 bridge checks, 22 React tests and 6 Rust relay tests pass; full .NET regression/service harness, Tauri debug build, prior native launch and sidecar parent-exit cleanup validated</span></label>
+      <label><input id="tauri-checkpoint" type="checkbox" checked><span>Clean local Tauri migration checkpoint created for Astra independent review: 099675beca2fb5a04ed2753e25dcac7a12326f19</span></label>
       <label><input id="tauri-compose-rich" type="checkbox"><span>Finish rich Compose: HTML editor, formatting toolbar, spellcheck, clean paste, inline images, attachment drag/drop and send-time validation</span></label>
       <label><input id="tauri-reader-remaining" type="checkbox"><span>Finish Reader extras: complete recipient details, production print/EML, unsubscribe, suspicious-link treatment, blocked sender/junk controls and optional pop-out reader</span></label>
       <label><input id="tauri-search-rules" type="checkbox"><span>Finish advanced search and organisation: cross-account filters/chips, rules, blocked senders, cache repair and saved workflows</span></label>
@@ -346,7 +347,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 12:31 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 2:35 PM AEST</span></label>
     </section>
 
     <section>
@@ -456,7 +457,7 @@
     ],
     'Future Tauri UI Redesign': [
       ['Design and selected scope', ['tauri-target', 'tauri-spec', 'tauri-approved', 'tauri-prototype', 'tauri-evidence']],
-      ['Migration foundation', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation']],
+      ['Migration foundation', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation', 'tauri-checkpoint']],
       ['Remaining implementation', ['tauri-compose-rich', 'tauri-reader-remaining', 'tauri-search-rules', 'tauri-contacts-calendar', 'tauri-sync-notify', 'tauri-interoperability', 'tauri-security']],
       ['Acceptance and release', ['tauri-release']],
       ['Full migration', ['tauri-migration']]

@@ -273,7 +273,7 @@
       <h2>Tauri / React Migration</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 56 Present, 18 Partial and 26 Missing</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 58 Present, 16 Partial and 26 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
@@ -370,7 +370,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 9 Sep 2026, 4:14 AM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 9 Sep 2026, 4:21 AM AEST</span></label>
     </section>
 
     <section>
@@ -422,7 +422,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>56 Present, 18 Partial, 26 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
+    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>58 Present, 16 Partial, 26 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -698,7 +698,7 @@
     ['FN-006','Functionality','Accounts','Microsoft OAuth sign-in','Partial','Corporate and Outlook.com users expect modern Microsoft authentication.','Must-have'],
     ['FN-007','Functionality','Accounts','Custom IMAP/SMTP account setup','Present','Open standards support prevents provider lock-in.','Must-have'],
     ['FN-008','Functionality','Accounts','Automatic IMAP/SMTP settings discovery','Present','Manual server configuration should be the fallback, not the default.','Essential'],
-    ['FN-009','Functionality','Accounts','Account health, reconnect and actionable error state','Partial','Authentication expiry and server failures need an obvious recovery path.','Must-have'],
+    ['FN-009','Functionality','Accounts','Account health, reconnect and actionable error state','Present','Accounts now show healthy, connecting, cached-offline, degraded and authorisation-required state with the appropriate reconnect or password-update recovery action.','Must-have'],
     ['FN-010','Functionality','Accounts','Per-account sync controls and pause/resume','Missing','Users may need to control bandwidth, privacy or problematic accounts.','Nice-to-have'],
     ['FN-011','Functionality','Accounts','Default sender selection','Present','New messages should choose a predictable From identity.','Essential'],
     ['FN-012','Functionality','Accounts','Aliases / Send-as identities','Partial','Power and business users commonly send from aliases.','Premium'],
@@ -892,7 +892,7 @@
     ['FN-185','Functionality','Reliability','Durable crash recovery','Present','Unexpected process loss should not corrupt workspace or lose drafts.','Must-have'],
     ['FN-186','Functionality','Reliability','Ambiguous-send protection against blind resend','Present','SMTP acceptance ambiguity can otherwise create duplicate sends.','Must-have'],
     ['FN-187','Functionality','Reliability','Provider-draft retry and restart recovery','Present','Remote draft failures should eventually recover without losing local work.','Must-have'],
-    ['FN-188','Functionality','Reliability','Account recovery flow after token/password expiry','Partial','Expired auth is routine and should not look like data loss.','Must-have'],
+    ['FN-188','Functionality','Reliability','Account recovery flow after token/password expiry','Present','Expired OAuth credentials use the cancellable reconnect flow, while password accounts return to secure discovery and credential verification without removing cached mail.','Must-have'],
     ['FN-189','Functionality','Reliability','Database/schema migration with rollback safety','Partial','Updates must not strand existing cached mail or settings.','Must-have'],
     ['FN-190','Functionality','Reliability','Cache repair and re-index command','Missing','Local state needs a supported recovery path.','Must-have'],
     ['FN-191','Functionality','Reliability','Privacy-controlled support bundle','Partial','Support should gather actionable diagnostics without mail content by default.','Premium'],

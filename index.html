@@ -279,8 +279,9 @@
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
       <label><input id="tauri-bridge" type="checkbox" checked><span>Existing .NET mail/OAuth/DPAPI/SQLite runtime retained behind a bundled, restartable NDJSON sidecar bridge with draft-safe shutdown</span></label>
       <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions and account Settings are state-bound in React</span></label>
-      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 28 bridge checks, 28 React tests and 6 Rust relay tests pass; full .NET regression/service harness, Tauri debug build, prior native launch and sidecar parent-exit cleanup validated</span></label>
+      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 28 bridge checks, 35 React tests and 6 Rust relay tests pass on the current Rich Compose tree; full .NET regression/service harness and Tauri debug build remain validated</span></label>
       <label><input id="tauri-checkpoint" type="checkbox" checked><span>Clean local Tauri migration checkpoint created for Astra independent review: 099675beca2fb5a04ed2753e25dcac7a12326f19</span></label>
+      <label><input id="tauri-astra-remediation" type="checkbox" checked><span>Astra reviewed that checkpoint and identified four blocking migration defects. Clean remediation commit b8c257be4616eb5f95c001b1ebb149411d0cff27 fixes uncertain-send retry safety, native window permissions, cancellable non-blocking OAuth authorisation, and ordinary IMAP conversation grouping. Remediation validation: Release build 0 warnings/0 errors, bridge/full managed harness pass, 24 React tests pass, 7 Rust tests pass, and the actual Tauri shell Minimise/Maximise/restore/Close controls passed with sidecar cleanup</span></label>
       <label><input id="tauri-compose-rich" type="checkbox"><span>Finish remaining rich Compose: inline images, attachment drag/drop, provider-aware size limits, complete existing-link editing, Send Later and Undo Send; durable HTML/plain drafts, formatting, clean paste and send-time recipient/subject/attachment checks are implemented</span></label>
       <label><input id="tauri-reader-remaining" type="checkbox"><span>Finish Reader extras: complete recipient details, production print/EML, unsubscribe, suspicious-link treatment, blocked sender/junk controls and optional pop-out reader</span></label>
       <label><input id="tauri-search-rules" type="checkbox"><span>Finish advanced search and organisation: cross-account filters/chips, rules, blocked senders, cache repair and saved workflows</span></label>
@@ -347,7 +348,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 2:45 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 3:19 PM AEST</span></label>
     </section>
 
     <section>
@@ -457,7 +458,7 @@
     ],
     'Future Tauri UI Redesign': [
       ['Design and selected scope', ['tauri-target', 'tauri-spec', 'tauri-approved', 'tauri-prototype', 'tauri-evidence']],
-      ['Migration foundation', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation', 'tauri-checkpoint']],
+      ['Migration foundation', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation', 'tauri-checkpoint', 'tauri-astra-remediation']],
       ['Remaining implementation', ['tauri-compose-rich', 'tauri-reader-remaining', 'tauri-search-rules', 'tauri-contacts-calendar', 'tauri-sync-notify', 'tauri-interoperability', 'tauri-security']],
       ['Acceptance and release', ['tauri-release']],
       ['Full migration', ['tauri-migration']]

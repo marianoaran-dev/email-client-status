@@ -279,7 +279,7 @@
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
       <label><input id="tauri-bridge" type="checkbox" checked><span>Existing .NET mail/OAuth/DPAPI/SQLite runtime retained behind a bundled, restartable NDJSON sidecar bridge with draft-safe shutdown</span></label>
       <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions, local Rules/Blocked Senders and account Settings are state-bound in React</span></label>
-      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 56 bridge checks, 52 React tests, 48 focused Rules checks, 262 managed regression/service checks and 7 Rust relay tests pass on the combined Rich Compose + Rules tree; frontend lint/build and the complete Tauri debug installer build are validated</span></label>
+      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 79 bridge checks, 56 React tests and 48 focused Rules checks pass; the last full managed baseline remains 262 regression/service checks with the new FN-088 managed scheduling/provider-race regressions also passing; 7 Rust relay tests and the complete Tauri debug installer remain validated from the prior combined-tree acceptance; frontend lint/build are clean</span></label>
       <label><input id="tauri-checkpoint" type="checkbox" checked><span>Clean local Tauri migration checkpoint created for Astra independent review: 099675beca2fb5a04ed2753e25dcac7a12326f19</span></label>
       <label><input id="tauri-astra-remediation" type="checkbox" checked><span>Astra's six-finding migration remediation cycle is accepted. Clean remediation commit 083ee9d29ac8d0dc9411e0e0b9b84dc2040c94ae preserves dirty drafts/workspaces safely through OAuth completion, aborts recomposition on local persistence failure, restores cancellation after navigating away/back from Accounts, and retains the earlier uncertain-send, native window, OAuth watchdog and IMAP thread-grouping fixes</span></label>
       <label><input id="tauri-rules-local" type="checkbox" checked><span>Local Rules + Blocked Senders implemented and independently isolated at commit 5b0a344: persisted account/source-folder rules, move/tag/read/flag/delete actions, deterministic terminal conflict handling, exact blocked addresses, durable no-replay receipts and safe Gmail-label/source binding are integrated into the live tree</span></label>
@@ -290,13 +290,13 @@
       <label><input id="tauri-compose-limits" type="checkbox" checked><span>Provider-aware attachment size handling implemented: personal Gmail/Outlook.com advisories, organisation-controlled Workspace/Microsoft 365 guidance, aggregate attachment warnings and authoritative SMTP SIZE preflight before submission</span></label>
       <label><input id="tauri-compose-clipboard" type="checkbox" checked><span>Clipboard image/file insertion implemented: bounded clipboard bytes enter private draft storage without filesystem-path authority; valid images become durable CID content and other files become ordinary attachments</span></label>
       <label><input id="tauri-compose-undo-redo" type="checkbox" checked><span>Rich Compose undo/redo implemented with bounded sanitised history, toolbar actions, Ctrl+Z/Ctrl+Y shortcuts, redo-branch invalidation and CID-safe inline-image restoration</span></label>
+      <label><input id="tauri-compose-send-later" type="checkbox" checked><span>Durable Send Later implemented: queued messages survive restart, keep independent attachment/CID ownership, support reschedule/cancel/restore, preserve stable submission identity and ambiguous-delivery protection, and catch up overdue work while the app is running without pretending to send while the app is closed</span></label>
       <label><input id="tauri-reader-core" type="checkbox" checked><span>Reader core implemented: safe HTML/plain rendering, remote-image privacy, thread expansion, Reply/Reply all/Forward and attachment handling</span></label>
       <label><input id="tauri-search-core" type="checkbox" checked><span>Search core implemented: fast local indexed/body search, offline cache search, normal search and Compose reference search</span></label>
       <label><input id="tauri-offline-core" type="checkbox" checked><span>Offline/sync foundation implemented: local cache, offline draft composition and background refresh/recovery primitives</span></label>
       <label><input id="tauri-security-core" type="checkbox" checked><span>Core trust boundaries implemented: hostile-HTML sanitisation, remote-image blocking, encrypted credentials/tokens, fail-closed TLS and privacy-safe diagnostics</span></label>
 
       <label><input id="tauri-compose-cloud-link" type="checkbox"><span>Add oversized-attachment recovery and optional cloud-link strategy</span></label>
-      <label><input id="tauri-compose-send-later" type="checkbox"><span>Add Send Later / scheduled send</span></label>
       <label><input id="tauri-compose-undo-send" type="checkbox"><span>Add configurable Undo Send delay</span></label>
       <label><input id="tauri-compose-editor-acceptance" type="checkbox"><span>Finish editor tail: conservative spellcheck acceptance in the real Windows WebView</span></label>
 
@@ -370,7 +370,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 8:43 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 8 Sep 2026, 10:20 PM AEST</span></label>
     </section>
 
     <section>
@@ -481,10 +481,10 @@
     'Tauri / React Migration': [
       ['Design and selected scope', ['tauri-target', 'tauri-spec', 'tauri-approved', 'tauri-prototype', 'tauri-evidence']],
       ['Migration foundation and Astra acceptance', ['tauri-shell', 'tauri-bridge', 'tauri-runtime-parity', 'tauri-validation', 'tauri-checkpoint', 'tauri-astra-remediation']],
-      ['Compose implemented', ['tauri-compose-foundation', 'tauri-compose-media', 'tauri-compose-safety', 'tauri-compose-limits', 'tauri-compose-clipboard', 'tauri-compose-undo-redo']],
+      ['Compose implemented', ['tauri-compose-foundation', 'tauri-compose-media', 'tauri-compose-safety', 'tauri-compose-limits', 'tauri-compose-clipboard', 'tauri-compose-undo-redo', 'tauri-compose-send-later']],
       ['Mail foundations implemented', ['tauri-reader-core', 'tauri-search-core', 'tauri-offline-core', 'tauri-security-core']],
       ['Rules implemented', ['tauri-rules-local']],
-      ['Compose — remaining', ['tauri-compose-cloud-link', 'tauri-compose-send-later', 'tauri-compose-undo-send', 'tauri-compose-editor-acceptance']],
+      ['Compose — remaining', ['tauri-compose-cloud-link', 'tauri-compose-undo-send', 'tauri-compose-editor-acceptance']],
       ['Reader — remaining', ['tauri-reader-details', 'tauri-reader-files', 'tauri-reader-trust', 'tauri-reader-popout']],
       ['Search and rules — remaining', ['tauri-search-advanced', 'tauri-rules']],
       ['Contacts, calendar, sync and notifications — remaining', ['tauri-contacts-calendar', 'tauri-sync-notify']],
@@ -781,7 +781,7 @@
     ['FN-085','Functionality','Compose','From identity / alias chooser','Present','Required once aliases or multiple identities exist.','Premium'],
     ['FN-086','Functionality','Compose','Message priority / importance','Missing','Legacy but still relevant in some business workflows.','Nice-to-have'],
     ['FN-087','Functionality','Compose','Read receipt / delivery receipt request','Missing','Useful in some business contexts, but provider support is inconsistent.','Nice-to-have'],
-    ['FN-088','Functionality','Compose','Schedule send / Send later','Missing','Now standard across Gmail, Apple Mail, Outlook, Spark, Proton, Fastmail and others.','Must-have'],
+    ['FN-088','Functionality','Compose','Schedule send / Send later','Present','Durable local scheduling now survives restart, owns independent attachment/CID content, supports reschedule/cancel/restore, catches up overdue messages while the app is running, and preserves stable-operation and unknown-delivery safeguards.','Must-have'],
     ['FN-089','Functionality','Compose','Undo Send delay','Missing','A short configurable send delay prevents common mistakes.','Must-have'],
     ['FN-090','Functionality','Compose','Durable local draft autosave','Present','No typed work should disappear through navigation or restart.','Must-have'],
     ['FN-091','Functionality','Compose','Provider-backed draft synchronisation','Present','Drafts should survive on the server and other devices.','Must-have'],

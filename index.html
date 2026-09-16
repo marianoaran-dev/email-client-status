@@ -14,6 +14,11 @@
     --line: #d9d5cc;
     --accent: #4f675d;
     --done: #587467;
+    --partial: #9a6b2f;
+    --missing: #8a4f4f;
+    --done-bg: #eef5f0;
+    --partial-bg: #fbf3e6;
+    --missing-bg: #f8eded;
     --pending: #8b857a;
     --shadow: 0 8px 24px rgba(0,0,0,.06);
   }
@@ -26,6 +31,11 @@
       --line: #3c3f3e;
       --accent: #9bb5a9;
       --done: #99b6a8;
+      --partial: #d6a45f;
+      --missing: #d49393;
+      --done-bg: #24312b;
+      --partial-bg: #362f24;
+      --missing-bg: #342727;
       --pending: #aaa79f;
       --shadow: none;
     }
@@ -39,8 +49,8 @@
     line-height: 1.4;
   }
   main {
-    width: min(1040px, calc(100% - 32px));
-    margin: 36px auto 72px;
+    width: min(1440px, calc(100% - 32px));
+    margin: 32px auto 72px;
   }
   h1 {
     font-size: clamp(28px, 4vw, 42px);
@@ -49,6 +59,91 @@
     font-weight: 720;
     letter-spacing: -.025em;
   }
+  .status-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(320px, .8fr);
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+  .status-hero-main,
+  .status-hero-actions {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .status-kicker {
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .status-hero h1 { margin: 0 0 8px; }
+  .status-subtitle {
+    margin: 0;
+    color: var(--muted);
+    max-width: 76ch;
+  }
+  .status-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .status-stat {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+    min-width: 0;
+  }
+  .status-stat strong {
+    display: block;
+    font-size: clamp(22px, 2vw, 30px);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  .status-stat span { color: var(--muted); font-size: 12px; }
+  .status-stat.present { background: var(--done-bg); border-color: color-mix(in srgb, var(--done) 32%, var(--line)); }
+  .status-stat.present strong { color: var(--done); }
+  .status-stat.partial { background: var(--partial-bg); border-color: color-mix(in srgb, var(--partial) 32%, var(--line)); }
+  .status-stat.partial strong { color: var(--partial); }
+  .status-stat.missing { background: var(--missing-bg); border-color: color-mix(in srgb, var(--missing) 32%, var(--line)); }
+  .status-stat.missing strong { color: var(--missing); }
+  .progress-track {
+    height: 10px;
+    overflow: hidden;
+    display: flex;
+    margin-top: 14px;
+    border-radius: 999px;
+    background: var(--line);
+  }
+  .progress-present { width: 64%; background: var(--done); }
+  .progress-partial { width: 12%; background: var(--partial); }
+  .progress-missing { width: 24%; background: var(--missing); }
+  .status-hero-actions h2 { font-size: 16px; margin: 0 0 8px; }
+  .status-hero-actions p { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  .status-actions { display: grid; gap: 8px; }
+  .status-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    background: color-mix(in srgb, var(--panel) 92%, var(--accent));
+    font-weight: 680;
+  }
+  .status-action:hover { border-color: var(--accent); }
+  .status-action.primary { background: var(--accent); border-color: var(--accent); color: white; }
+  .status-action small { font-weight: 500; opacity: .8; }
+  .status-note { margin-top: 12px !important; font-size: 11px !important; }
   .grid { display: none; }
   .grid.tree-view {
     display: block;
@@ -203,15 +298,35 @@
   .catalogue-controls button { cursor: pointer; font-weight: 650; }
   .catalogue-controls button:hover { border-color: var(--accent); }
   .catalogue-count { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
-  .catalogue-table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 10px; }
-  .catalogue table { width: 100%; min-width: 1080px; border-collapse: collapse; font-size: 13px; }
+  .catalogue-table-wrap { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+  .catalogue table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 12.5px; }
   .catalogue th,
-  .catalogue td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
-  .catalogue th { position: sticky; top: 0; z-index: 1; background: var(--panel); font-size: 12px; }
+  .catalogue td {
+    padding: 9px 9px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+  .catalogue th { position: sticky; top: 0; z-index: 1; background: var(--panel); font-size: 11px; }
+  .catalogue th:nth-child(1) { width: 8%; }
+  .catalogue th:nth-child(2) { width: 9%; }
+  .catalogue th:nth-child(3) { width: 22%; }
+  .catalogue th:nth-child(4) { width: 10%; }
+  .catalogue th:nth-child(5) { width: 31%; }
+  .catalogue th:nth-child(6) { width: 10%; }
+  .catalogue th:nth-child(7) { width: 10%; }
   .catalogue tbody tr:last-child td { border-bottom: 0; }
-  .catalogue .feature-name { font-weight: 650; min-width: 210px; }
+  .catalogue tbody tr.state-present { background: var(--done-bg); }
+  .catalogue tbody tr.state-partial { background: var(--partial-bg); }
+  .catalogue tbody tr.state-missing { background: var(--missing-bg); }
+  .catalogue tbody tr:hover { filter: brightness(.985); }
+  .catalogue .feature-name { font-weight: 680; }
   .catalogue .feature-id { color: var(--muted); font-family: ui-monospace, "Cascadia Code", monospace; font-size: 11px; }
-  .catalogue .approval-cell { text-align: center; min-width: 118px; }
+  .catalogue .approval-cell { text-align: center; }
+  .catalogue .state-pill-present { color: var(--done); border-color: color-mix(in srgb, var(--done) 45%, var(--line)); background: color-mix(in srgb, var(--done-bg) 85%, transparent); }
+  .catalogue .state-pill-partial { color: var(--partial); border-color: color-mix(in srgb, var(--partial) 45%, var(--line)); background: color-mix(in srgb, var(--partial-bg) 85%, transparent); }
+  .catalogue .state-pill-missing { color: var(--missing); border-color: color-mix(in srgb, var(--missing) 45%, var(--line)); background: color-mix(in srgb, var(--missing-bg) 85%, transparent); }
   .catalogue input.approval-checkbox {
     width: 18px;
     height: 18px;
@@ -224,12 +339,53 @@
   .catalogue .already-present { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
   .catalogue-sources { margin-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.5; }
   .catalogue-sources strong { color: var(--text); }
-  @media (max-width: 760px) {
-    main { width: min(100% - 20px, 680px); margin-top: 22px; }
-    .grid.tree-view { padding: 12px 10px 16px; border-radius: 14px; }
-    .catalogue { padding: 14px 10px; border-radius: 14px; }
-    .catalogue-controls { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 1050px) {
+    .status-hero { grid-template-columns: 1fr; }
+    .catalogue-controls { grid-template-columns: 1fr 1fr 1fr; }
     .catalogue-controls input { grid-column: 1 / -1; }
+    .catalogue-table-wrap { border: 0; overflow: visible; }
+    .catalogue table,
+    .catalogue tbody,
+    .catalogue tr,
+    .catalogue td { display: block; width: 100%; }
+    .catalogue thead { display: none; }
+    .catalogue tbody { display: grid; gap: 10px; }
+    .catalogue tr {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.025);
+    }
+    .catalogue td {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 10px;
+      padding: 6px 0;
+      border: 0;
+    }
+    .catalogue td::before {
+      content: attr(data-label);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .catalogue .approval-cell { text-align: left; }
+    .catalogue input.approval-checkbox { margin: 0; }
+    .catalogue .already-present { display: inline; margin-left: 8px; }
+  }
+  @media (max-width: 760px) {
+    main { width: min(100% - 20px, 680px); margin-top: 18px; }
+    .status-hero-main,
+    .status-hero-actions,
+    .grid.tree-view,
+    .catalogue { padding: 14px 12px; border-radius: 14px; }
+    .status-stats { grid-template-columns: 1fr 1fr; }
+    .catalogue-controls { grid-template-columns: 1fr; }
+    .catalogue-controls input,
+    .catalogue-controls button { grid-column: auto; }
+    .catalogue td { grid-template-columns: 110px minmax(0, 1fr); }
     .tree-children { margin-left: 10px; padding-left: 18px; }
     .tree-node::before,
     .tree-final::before,
@@ -247,7 +403,38 @@
 </head>
 <body>
 <main>
-  <h1>Email Client - Full Project Picture</h1>
+  <section class="status-hero" aria-label="Project status summary">
+    <div class="status-hero-main">
+      <p class="status-kicker">Quiet Editorial · Email Client</p>
+      <h1>Email Client Project Status</h1>
+      <p class="status-subtitle">A concise view of what is working, what is partly complete and what is still missing. The 100-item catalogue below is the authoritative implementation picture.</p>
+      <div class="status-stats" aria-label="Catalogue progress">
+        <div class="status-stat present"><strong>64</strong><span>Present</span></div>
+        <div class="status-stat partial"><strong>12</strong><span>Partial</span></div>
+        <div class="status-stat missing"><strong>24</strong><span>Missing</span></div>
+        <div class="status-stat"><strong>76%</strong><span>Implemented or partial</span></div>
+      </div>
+      <div class="progress-track" aria-label="64 present, 12 partial, 24 missing">
+        <span class="progress-present"></span><span class="progress-partial"></span><span class="progress-missing"></span>
+      </div>
+    </div>
+    <aside class="status-hero-actions">
+      <h2>Latest test checkpoint</h2>
+      <p>Local source checkpoint <strong>9546e4d</strong>. The app is not production-ready and the latest installer is an unsigned local debug build.</p>
+      <div class="status-actions">
+        <a class="status-action primary" href="file:///C:/Users/maria/GitHub/Software-Dev/Email-Client/src/EmailClient.Desktop/src-tauri/target/debug/bundle/nsis/Quiet%20Editorial_0.1.0_x64-setup.exe">
+          <span>Test latest local build</span><small>Windows installer</small>
+        </a>
+        <a class="status-action" href="https://github.com/marianoaran-dev/Email-Client/commit/9546e4d8240d7f9e443eb2ce1ffb773c15f924ee" target="_blank" rel="noreferrer">
+          <span>Open latest checkpoint</span><small>GitHub</small>
+        </a>
+        <a class="status-action" href="#product-polish-catalogue">
+          <span>Jump to feature catalogue</span><small>100 items</small>
+        </a>
+      </div>
+      <p class="status-note">The local installer link works on Mariano’s Windows development machine. A public downloadable build should replace it once release packaging is established.</p>
+    </aside>
+  </section>
   <div class="grid">
 
     <section class="full">
@@ -279,7 +466,7 @@
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
       <label><input id="tauri-bridge" type="checkbox" checked><span>Existing .NET mail/OAuth/DPAPI/SQLite runtime retained behind a bundled, restartable NDJSON sidecar bridge with draft-safe shutdown</span></label>
       <label><input id="tauri-runtime-parity" type="checkbox" checked><span>Core Mail, Reader, Search, Compose, reference search, configurable toolbars, live Appearance, sender identities/signatures, folder CRUD/counts/drag-drop, provider tags/labels, conversation grouping/thread expansion, multi-select/bulk actions, local Rules/Blocked Senders and account Settings are state-bound in React</span></label>
-      <label><input id="tauri-validation" type="checkbox" checked><span>Release solution build is warning-clean; 79 bridge checks, 56 React tests, 49 focused Rules checks and 264 managed regression/service checks pass; 7 Rust relay tests pass; frontend lint/build are clean; the complete Tauri debug NSIS installer was rebuilt successfully against the current combined tree</span></label>
+      <label><input id="tauri-validation" type="checkbox" checked><span>Latest closure checkpoint passes the complete managed harness and bridge suite, all 76 React tests, frontend lint/build and the solution build; earlier Rust and Tauri packaging baselines remain green</span></label>
       <label><input id="tauri-checkpoint" type="checkbox" checked><span>Clean local Tauri migration checkpoint created for Astra independent review: 099675beca2fb5a04ed2753e25dcac7a12326f19</span></label>
       <label><input id="tauri-astra-remediation" type="checkbox" checked><span>Astra's six-finding migration remediation cycle is accepted. Clean remediation commit 083ee9d29ac8d0dc9411e0e0b9b84dc2040c94ae preserves dirty drafts/workspaces safely through OAuth completion, aborts recomposition on local persistence failure, restores cancellation after navigating away/back from Accounts, and retains the earlier uncertain-send, native window, OAuth watchdog and IMAP thread-grouping fixes</span></label>
       <label><input id="tauri-rules-local" type="checkbox" checked><span>Local Rules + Blocked Senders implemented and independently isolated at commit 5b0a344: persisted account/source-folder rules, move/tag/read/flag/delete actions, deterministic terminal conflict handling, exact blocked addresses, durable no-replay receipts and safe Gmail-label/source binding are integrated into the live tree</span></label>
@@ -300,15 +487,15 @@
       <label><input id="tauri-compose-undo-send" type="checkbox"><span>Add configurable Undo Send delay</span></label>
       <label><input id="tauri-compose-editor-acceptance" type="checkbox"><span>Finish editor tail: conservative spellcheck acceptance in the real Windows WebView</span></label>
 
-      <label><input id="tauri-reader-details" type="checkbox"><span>Finish Reader detail/power surfaces: complete sender/recipient details, full headers and message source/MIME</span></label>
+      <label><input id="tauri-reader-details" type="checkbox"><span>Finish Reader power surfaces: full headers and message source/MIME</span></label>
       <label><input id="tauri-reader-files" type="checkbox"><span>Finish Reader file/interchange flows: production print/Print-to-PDF, save/open EML and drag messages/attachments to Explorer</span></label>
       <label><input id="tauri-reader-trust" type="checkbox"><span>Finish Reader trust actions: one-click unsubscribe, suspicious-link/phishing treatment and provider-aware junk/block controls</span></label>
       <label><input id="tauri-reader-popout" type="checkbox"><span>Add optional pop-out Reader</span></label>
 
-      <label><input id="tauri-search-advanced" type="checkbox"><span>Finish advanced search: complete cross-account search, operators/filter chips, attachment search, search history and saved searches</span></label>
+      <label><input id="tauri-search-advanced" type="checkbox"><span>Finish advanced search: operators, attachment search, search history and saved searches</span></label>
       <label><input id="tauri-rules" type="checkbox"><span>Finish remaining organisation workflows: provider-side rules where available, safe-sender/allow list, automatic forwarding and cache repair/re-index</span></label>
-      <label><input id="tauri-contacts-calendar" type="checkbox"><span>Add contacts/groups/provider directory integration and calendar invitation display, RSVP and update handling</span></label>
-      <label><input id="tauri-sync-notify" type="checkbox"><span>Finish offline/sync and notifications: durable offline outbox, bounded retry/sync controls, native notifications and recovery UX</span></label>
+      <label><input id="tauri-contacts-calendar" type="checkbox"><span>Finish contacts/provider directory integration and add calendar invitation display, RSVP and update handling</span></label>
+      <label><input id="tauri-sync-notify" type="checkbox"><span>Finish offline/sync and notifications: durable offline outbox, bounded retry controls, native notifications and recovery UX</span></label>
       <label><input id="tauri-interoperability" type="checkbox"><span>Add Windows interoperability: default mail/mailto registration, EML integration, settings interchange and remaining desktop drag/export flows</span></label>
       <label><input id="tauri-security" type="checkbox"><span>Finish security/trust UX: phishing indicators, tracker-link handling, destructive-action undo/confirmation, safe-open/Internet-origin boundaries and provider-aware junk/block controls</span></label>
       <label><input id="tauri-release" type="checkbox"><span>Complete production acceptance: live-provider/manual gates, screen-reader/high-contrast acceptance, signed installer/update artefacts and sustained real-world mailbox validation</span></label>
@@ -370,7 +557,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 9 Sep 2026, 9:31 AM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 16 Sep 2026, 5:13 PM AEST</span></label>
     </section>
 
     <section>
@@ -422,7 +609,7 @@
 
   <section class="catalogue" id="product-polish-catalogue">
     <h2>Product Polish Catalogue</h2>
-    <p class="catalogue-intro">Current product-polish catalogue for the UX/UI and functionality passes. Priority/classification remains the research baseline; <strong>Current state</strong> now tracks verified implementation in the live Tauri/React tree. The approved Tauri scope is 100 items: <strong>64 Present, 12 Partial, 24 Missing</strong>. The Tauri migration tree above now separates implemented slices from the remaining work so partial areas no longer look untouched. The final <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
+    <p class="catalogue-intro">The 100 approved UX and functionality items below are the authoritative implementation status: <strong>64 Present, 12 Partial, 24 Missing</strong>. Green rows are complete, amber rows still need bounded work or acceptance, and red rows are not implemented. Use the filters to focus the table; <strong>Approved/implement</strong> checkboxes remain browser-local planning controls.</p>
     <div class="catalogue-legend" aria-label="Priority taxonomy">
       <span class="pill">Basic: universal email primitive</span>
       <span class="pill">Essential: expected daily-use capability</span>
@@ -662,7 +849,7 @@
     ['UX-022','UX/UI','Accessibility','Persistent visible keyboard focus with adequate contrast','Present','WCAG and Windows guidance require focus to remain obvious and unobscured.','Must-have'],
     ['UX-023','UX/UI','Accessibility','Full manual Narrator/NVDA screen-reader acceptance','Partial','Automated UIA coverage is not a substitute for real screen-reader behaviour.','Must-have'],
     ['UX-024','UX/UI','Accessibility','OS high-contrast mode acceptance','Partial','Custom themes must not block Windows high-contrast resources.','Must-have'],
-    ['UX-025','UX/UI','Accessibility','Reduced-motion preference and nonessential animation suppression','Missing','Motion should never be required to understand state and should respect user preference.','Essential'],
+    ['UX-025','UX/UI','Accessibility','Reduced-motion preference and nonessential animation suppression','Present','The Tauri/WebView2 UI disables CSS animations and transitions under the reduced-motion media preference; native WebView2 acceptance verified infinite sync/busy motion and control transitions resolve to none/0s.','Essential'],
     ['UX-026','UX/UI','Accessibility','Pointer targets and spacing suitable for motor accessibility','Partial','WCAG 2.2 adds a 24 by 24 minimum target-size criterion or equivalent spacing.','Essential'],
     ['UX-027','UX/UI','Accessibility','Colour never used as the only state indicator','Partial','Icons, text and shape should reinforce colour-coded states.','Must-have'],
     ['UX-028','UX/UI','Scaling','App zoom, font scaling and DPI-safe reflow','Present','Mail is text-heavy and must remain usable under scaling.','Must-have'],
@@ -926,7 +1113,12 @@
   const approved = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
 
   const saveApproved = () => localStorage.setItem(storageKey, JSON.stringify(Array.from(approved).sort()));
-  const pill = value => `<span class="pill">${value}</span>`;
+  const pill = value => {
+    const stateClass = ['Present', 'Partial', 'Missing'].includes(value)
+      ? ` state-pill-${value.toLowerCase()}`
+      : '';
+    return `<span class="pill${stateClass}">${value}</span>`;
+  };
 
   const render = () => {
     const q = search.value.trim().toLowerCase();
@@ -941,8 +1133,9 @@
       const [id, polishPhase, area, feature, currentState, reason, classification] = r;
       const tr = document.createElement('tr');
       tr.dataset.featureId = id;
+      tr.classList.add(`state-${currentState.toLowerCase()}`);
       const present = currentState === 'Present';
-      tr.innerHTML = `<td><span class="feature-id">${id}</span><br><span>${polishPhase}</span></td><td>${area}</td><td class="feature-name">${feature}</td><td>${pill(currentState)}</td><td>${reason}</td><td>${pill(classification)}</td><td class="approval-cell"></td>`;
+      tr.innerHTML = `<td data-label="ID / phase"><span class="feature-id">${id}</span><br><span>${polishPhase}</span></td><td data-label="Area">${area}</td><td data-label="Capability" class="feature-name">${feature}</td><td data-label="Status">${pill(currentState)}</td><td data-label="Why it matters">${reason}</td><td data-label="Priority">${pill(classification)}</td><td data-label="Approved" class="approval-cell"></td>`;
       const cell = tr.lastElementChild;
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';

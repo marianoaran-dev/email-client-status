@@ -407,7 +407,7 @@
     <div class="status-hero-main">
       <p class="status-kicker">Mail for Windows · Apple Mail 16 goal</p>
       <h1>Email Client Project Status</h1>
-      <p class="status-subtitle">The Apple Mail 16 goal is active and unfinished. Undo Send, Remind Me and metadata-based Smart Mailboxes are implemented. Catalogue counts describe reusable implementation, not Apple Mail parity. Visual, provider and Windows acceptance remain separate checks.</p>
+      <p class="status-subtitle">The Apple Mail 16 goal is active and unfinished. Undo Send, Remind Me and metadata and indexed-content Smart Mailboxes are implemented. Catalogue counts describe reusable implementation, not Apple Mail parity. Visual, provider and Windows acceptance remain separate checks.</p>
       <div class="status-stats" aria-label="Catalogue progress">
         <div class="status-stat present"><strong>65</strong><span>Present</span></div>
         <div class="status-stat partial"><strong>12</strong><span>Partial</span></div>
@@ -420,7 +420,7 @@
     </div>
     <aside class="status-hero-actions">
       <h2>Latest test checkpoint</h2>
-      <p>Active local branch: <strong>codex/apple-mail-16</strong>. Windows debug executable and installer build; 112 frontend, 170 bridge, 273 managed and 12 packaged-sidecar checks pass. Unchanged Rust retains 11 passing checks. Full Apple parity and release acceptance remain pending.</p>
+      <p>Active local branch: <strong>codex/apple-mail-16</strong>. Windows debug executable and installer build; 116 frontend, 193 bridge, 273 managed and 16 packaged-sidecar checks pass. Unchanged Rust retains 11 passing checks. Full Apple parity and release acceptance remain pending.</p>
       <div class="status-actions">
         <a class="status-action primary" href="#mail16-goal">
           <span>Review current goal</span><small>Active work</small>
@@ -445,8 +445,9 @@
       <label><input id="mail16-undo" type="checkbox" checked><span>Durable Undo Send implemented with Off / 10 / 20 / 30 seconds, restart recovery and protected cancellation</span></label>
       <label><input id="mail16-reminders" type="checkbox" checked><span>Durable Remind Me implemented: presets, custom dates, edit/remove, restart, mailbox and Inbox resurfacing</span></label>
       <label><input id="mail16-smart-metadata" type="checkbox" checked><span>Durable Smart Mailbox metadata criteria, editor, Today history, restart and non-destructive deletion implemented</span></label>
-      <label><input id="mail16-smart-complete" type="checkbox"><span>Complete Smart Mailbox criteria, indexed bodies/recipients, folders and native/provider acceptance</span></label>
-      <label><input id="mail16-tests" type="checkbox" checked><span>112 frontend, 170 bridge, 273 managed and 12 packaged-sidecar checks pass; retained 11 Rust checks, lint and frontend/native builds pass</span></label>
+      <label><input id="mail16-smart-content" type="checkbox" checked><span>Indexed full-body and recipient Smart Mailbox criteria, incomplete-result retry and restart implemented</span></label>
+      <label><input id="mail16-smart-complete" type="checkbox"><span>Complete Smart Mailbox criteria, folder grouping, cache coverage and native/provider acceptance</span></label>
+      <label><input id="mail16-tests" type="checkbox" checked><span>116 frontend, 193 bridge, 273 managed and 16 packaged-sidecar checks pass; retained 11 Rust checks, lint and frontend/native builds pass</span></label>
       <label><input id="mail16-reminder-native" type="checkbox"><span>Installed Windows reminder notification display verified — still pending</span></label>
       <label><input id="mail16-exact-visual" type="checkbox"><span>Exact visual match across every documented window and state</span></label>
       <label><input id="mail16-features" type="checkbox"><span>Complete Apple feature coverage, including Smart Mailboxes, VIPs, coloured flags and separate windows</span></label>
@@ -575,7 +576,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 5 Oct 2026, 4:13 AM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 5 Oct 2026, 4:43 AM AEST</span></label>
     </section>
 
     <section>
@@ -1016,7 +1017,7 @@
     ['FN-113','Functionality','Search','Advanced operators','Missing','Gmail-style from:, to:, date and attachment operators support precise power search.','Premium'],
     ['FN-114','Functionality','Search','Visual filter chips for sender, date, folder, attachment and unread','Present','Search results expose explicit sender, date, folder, attachment and unread filters; sender and folder facets are applied before conversation grouping so each result genuinely matches the selected narrowing.','Must-have'],
     ['FN-115','Functionality','Search','Search history / recent searches','Missing','Useful for repeated project or sender searches.','Nice-to-have'],
-    ['FN-116','Functionality','Search','Saved searches','Partial','Durable Smart Mailboxes save all/any metadata criteria with automatic matching and restart recovery. Full body/recipient indexing, grouping and native/provider acceptance remain unfinished.','Premium'],
+    ['FN-116','Functionality','Search','Saved searches','Partial','Durable Smart Mailboxes save all/any metadata and indexed body/To/Cc/recipient criteria with restart recovery. Grouping, complete criteria, cache coverage and native/provider acceptance remain unfinished.','Premium'],
     ['FN-117','Functionality','Search','Fuzzy suggestions / typo tolerance','Missing','Improves recovery when exact spelling or address is unknown.','Premium'],
     ['FN-118','Functionality','Search','Attachment filename search','Missing','Users often remember the file rather than the subject line.','Premium'],
     ['FN-119','Functionality','Search','Attachment content indexing where safe','Missing','Powerful for documents but requires careful privacy/performance boundaries.','Nice-to-have'],

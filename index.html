@@ -120,9 +120,9 @@
     border-radius: 999px;
     background: var(--line);
   }
-  .progress-present { width: 64%; background: var(--done); }
+  .progress-present { width: 65%; background: var(--done); }
   .progress-partial { width: 12%; background: var(--partial); }
-  .progress-missing { width: 24%; background: var(--missing); }
+  .progress-missing { width: 23%; background: var(--missing); }
   .status-hero-actions h2 { font-size: 16px; margin: 0 0 8px; }
   .status-hero-actions p { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
   .status-actions { display: grid; gap: 8px; }
@@ -405,40 +405,54 @@
 <main>
   <section class="status-hero" aria-label="Project status summary">
     <div class="status-hero-main">
-      <p class="status-kicker">Quiet Editorial · Email Client</p>
+      <p class="status-kicker">Mail for Windows · Apple Mail 16 goal</p>
       <h1>Email Client Project Status</h1>
-      <p class="status-subtitle">A concise view of what is working, what is partly complete and what is still missing. The 100-item catalogue below is the authoritative implementation picture.</p>
+      <p class="status-subtitle">The Apple Mail 16 goal is active. Catalogue counts describe reusable implementation, not Apple Mail parity. Visual, provider and Windows acceptance remain separate checks.</p>
       <div class="status-stats" aria-label="Catalogue progress">
-        <div class="status-stat present"><strong>64</strong><span>Present</span></div>
+        <div class="status-stat present"><strong>65</strong><span>Present</span></div>
         <div class="status-stat partial"><strong>12</strong><span>Partial</span></div>
-        <div class="status-stat missing"><strong>24</strong><span>Missing</span></div>
-        <div class="status-stat"><strong>76%</strong><span>Implemented or partial</span></div>
+        <div class="status-stat missing"><strong>23</strong><span>Missing</span></div>
+        <div class="status-stat"><strong>77%</strong><span>Implemented or partial</span></div>
       </div>
-      <div class="progress-track" aria-label="64 present, 12 partial, 24 missing">
+      <div class="progress-track" aria-label="65 present, 12 partial, 23 missing">
         <span class="progress-present"></span><span class="progress-partial"></span><span class="progress-missing"></span>
       </div>
     </div>
     <aside class="status-hero-actions">
       <h2>Latest test checkpoint</h2>
-      <p>Local source checkpoint <strong>9546e4d</strong>. The app is not production-ready and the latest installer is an unsigned local debug build.</p>
+      <p>Active local branch: <strong>codex/apple-mail-16</strong>. Windows debug executable builds; 92 frontend, 110 bridge and 273 managed checks pass. Full Apple parity and release acceptance remain pending.</p>
       <div class="status-actions">
-        <a class="status-action primary" href="file:///C:/Users/maria/GitHub/Software-Dev/Email-Client/src/EmailClient.Desktop/src-tauri/target/debug/bundle/nsis/Quiet%20Editorial_0.1.0_x64-setup.exe">
-          <span>Test latest local build</span><small>Windows installer</small>
+        <a class="status-action primary" href="#mail16-goal">
+          <span>Review current goal</span><small>Active work</small>
         </a>
         <a class="status-action" href="https://github.com/marianoaran-dev/Email-Client/commit/9546e4d8240d7f9e443eb2ce1ffb773c15f924ee" target="_blank" rel="noreferrer">
-          <span>Open latest checkpoint</span><small>GitHub</small>
+          <span>Preserved previous checkpoint</span><small>GitHub</small>
         </a>
         <a class="status-action" href="#product-polish-catalogue">
           <span>Jump to feature catalogue</span><small>100 items</small>
         </a>
       </div>
-      <p class="status-note">The local installer link works on Mariano’s Windows development machine. A public downloadable build should replace it once release packaging is established.</p>
+      <p class="status-note">The preview remains local. No source repository or downloadable release is published by this dashboard.</p>
     </aside>
   </section>
   <div class="grid">
+    <section class="full" id="mail16-goal">
+      <h2>Apple Mail 16 for Windows — active goal</h2>
+      <label><input id="mail16-branch" type="checkbox" checked><span>New isolated branch created; previous branch, pending work and production profile preserved</span></label>
+      <label><input id="mail16-references" type="checkbox" checked><span>User-provided research adopted; newest Apple screenshots take precedence</span></label>
+      <label><input id="mail16-shell" type="checkbox" checked><span>New sidebar, capsule toolbar, message list and compact reader implemented using the existing mail engine</span></label>
+      <label><input id="mail16-visual-baseline" type="checkbox" checked><span>Desktop, tablet, compact, dark and compose browser captures inspected; baseline layout repairs verified</span></label>
+      <label><input id="mail16-undo" type="checkbox" checked><span>Durable Undo Send implemented with Off / 10 / 20 / 30 seconds, restart recovery and protected cancellation</span></label>
+      <label><input id="mail16-tests" type="checkbox" checked><span>92 frontend, 110 bridge, 273 managed and 9 Rust checks pass; lint and frontend/native builds pass</span></label>
+      <label><input id="mail16-exact-visual" type="checkbox"><span>Exact visual match across every documented window and state</span></label>
+      <label><input id="mail16-features" type="checkbox"><span>Complete Apple feature coverage, including Smart Mailboxes, Remind Me, VIPs, coloured flags and separate windows</span></label>
+      <label><input id="mail16-native" type="checkbox"><span>New native UI, real-provider workflows and installer accepted end to end</span></label>
+      <label><input id="mail16-complete" type="checkbox"><span>100% parity verified — not achieved</span></label>
+    </section>
+
 
     <section class="full">
-      <h2>Overall</h2>
+      <h2>Preserved product milestones</h2>
       <label><input id="overall-design" type="checkbox" checked><span class="major">Visual and UX direction validated</span></label>
       <label><input id="overall-m1" type="checkbox" checked><span class="major">Milestone 1 complete</span></label>
       <label><input id="overall-m2" type="checkbox" checked><span class="major">Milestone 2 software scope complete and validated</span></label>
@@ -446,7 +460,7 @@
     </section>
 
     <section>
-      <h2>Product and Design Foundation</h2>
+      <h2>Preserved Quiet Editorial foundation</h2>
       <label><input id="foundation-product" type="checkbox" checked><span>Core product direction defined</span></label>
       <label><input id="foundation-boundary" type="checkbox" checked><span>Email client and assistant propositions kept separable</span></label>
       <label><input id="foundation-qe3" type="checkbox" checked><span>Quiet Editorial v3 design direction selected</span></label>
@@ -460,7 +474,7 @@
       <h2>Tauri / React Migration</h2>
       <label><input id="tauri-target" type="checkbox" checked><span>Tauri 2 + React + TypeScript + custom HTML/CSS technical UI target defined</span></label>
       <label><input id="tauri-spec" type="checkbox" checked><span>Quiet Editorial Tauri Desktop design specification completed with wide, medium and compact behaviour</span></label>
-      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 64 Present, 12 Partial and 24 Missing</span></label>
+      <label><input id="tauri-approved" type="checkbox" checked><span>User-approved Product Polish scope captured exactly: 100 stable feature IDs; current implementation state is 65 Present, 12 Partial and 23 Missing</span></label>
       <label><input id="tauri-prototype" type="checkbox" checked><span>Interactive framework-independent Tauri UI prototype completed for Mail, Reader, Compose, Search, command palette and Settings, with a left-edge-resizable one/two-column Appearance live inspector and functional preview controls</span></label>
       <label><input id="tauri-evidence" type="checkbox" checked><span>Light/dark, wide/medium/compact, default Appearance and widened two-column live-control render evidence inspected</span></label>
       <label><input id="tauri-shell" type="checkbox" checked><span>Production Tauri 2 + React shell now builds and launches natively on Windows with real cached mailbox/account state</span></label>
@@ -484,7 +498,7 @@
       <label><input id="tauri-security-core" type="checkbox" checked><span>Core trust boundaries implemented: hostile-HTML sanitisation, remote-image blocking, encrypted credentials/tokens, fail-closed TLS and privacy-safe diagnostics</span></label>
 
       <label><input id="tauri-compose-cloud-link" type="checkbox"><span>Add oversized-attachment recovery and optional cloud-link strategy</span></label>
-      <label><input id="tauri-compose-undo-send" type="checkbox"><span>Add configurable Undo Send delay</span></label>
+      <label><input id="tauri-compose-undo-send" type="checkbox" checked><span>Configurable durable Undo Send implemented on the Mail for Windows branch</span></label>
       <label><input id="tauri-compose-editor-acceptance" type="checkbox"><span>Finish editor tail: conservative spellcheck acceptance in the real Windows WebView</span></label>
 
       <label><input id="tauri-reader-details" type="checkbox"><span>Finish Reader power surfaces: full headers and message source/MIME</span></label>
@@ -557,7 +571,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 16 Sep 2026, 5:13 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 5 Oct 2026, 2:36 AM AEST</span></label>
     </section>
 
     <section>
@@ -969,7 +983,7 @@
     ['FN-086','Functionality','Compose','Message priority / importance','Missing','Legacy but still relevant in some business workflows.','Nice-to-have'],
     ['FN-087','Functionality','Compose','Read receipt / delivery receipt request','Missing','Useful in some business contexts, but provider support is inconsistent.','Nice-to-have'],
     ['FN-088','Functionality','Compose','Schedule send / Send later','Present','Durable local scheduling now survives restart, owns independent attachment/CID content, supports reschedule/cancel/restore, catches up overdue messages while the app is running, and preserves stable-operation and unknown-delivery safeguards.','Must-have'],
-    ['FN-089','Functionality','Compose','Undo Send delay','Missing','A short configurable send delay prevents common mistakes.','Must-have'],
+    ['FN-089','Functionality','Compose','Undo Send delay','Present','Mail for Windows implements a durable Off/10/20/30-second delay with backend deadline enforcement, exact draft restoration, restart recovery and no recall after submission begins. Live provider acceptance remains pending.','Must-have'],
     ['FN-090','Functionality','Compose','Durable local draft autosave','Present','No typed work should disappear through navigation or restart.','Must-have'],
     ['FN-091','Functionality','Compose','Provider-backed draft synchronisation','Present','Drafts should survive on the server and other devices.','Must-have'],
     ['FN-092','Functionality','Compose','Missing attachment warning','Present','If the message says an attachment exists, the client should catch likely omissions.','Premium'],

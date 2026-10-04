@@ -407,7 +407,7 @@
     <div class="status-hero-main">
       <p class="status-kicker">Mail for Windows · Apple Mail 16 goal</p>
       <h1>Email Client Project Status</h1>
-      <p class="status-subtitle">The Apple Mail 16 goal is unfinished; automatic continuation has reached a usage limit. Catalogue counts describe reusable implementation, not Apple Mail parity. Visual, provider and Windows acceptance remain separate checks.</p>
+      <p class="status-subtitle">The Apple Mail 16 goal is active and unfinished. Undo Send and durable Remind Me are implemented. Catalogue counts describe reusable implementation, not Apple Mail parity. Visual, provider and Windows acceptance remain separate checks.</p>
       <div class="status-stats" aria-label="Catalogue progress">
         <div class="status-stat present"><strong>65</strong><span>Present</span></div>
         <div class="status-stat partial"><strong>12</strong><span>Partial</span></div>
@@ -420,7 +420,7 @@
     </div>
     <aside class="status-hero-actions">
       <h2>Latest test checkpoint</h2>
-      <p>Active local branch: <strong>codex/apple-mail-16</strong>. Windows debug executable and installer build; 92 frontend, 110 bridge and 273 managed checks pass. Full Apple parity and release acceptance remain pending.</p>
+      <p>Active local branch: <strong>codex/apple-mail-16</strong>. Windows debug executable and installer build; 102 frontend, 136 bridge, 273 managed, 11 Rust and 6 packaged-sidecar checks pass. Full Apple parity and release acceptance remain pending.</p>
       <div class="status-actions">
         <a class="status-action primary" href="#mail16-goal">
           <span>Review current goal</span><small>Active work</small>
@@ -443,9 +443,11 @@
       <label><input id="mail16-shell" type="checkbox" checked><span>New sidebar, capsule toolbar, message list and compact reader implemented using the existing mail engine</span></label>
       <label><input id="mail16-visual-baseline" type="checkbox" checked><span>Desktop, tablet, compact, dark and compose browser captures inspected; baseline layout repairs verified</span></label>
       <label><input id="mail16-undo" type="checkbox" checked><span>Durable Undo Send implemented with Off / 10 / 20 / 30 seconds, restart recovery and protected cancellation</span></label>
-      <label><input id="mail16-tests" type="checkbox" checked><span>92 frontend, 110 bridge, 273 managed and 9 Rust checks pass; lint and frontend/native builds pass</span></label>
+      <label><input id="mail16-reminders" type="checkbox" checked><span>Durable Remind Me implemented: presets, custom dates, edit/remove, restart, mailbox and Inbox resurfacing</span></label>
+      <label><input id="mail16-tests" type="checkbox" checked><span>102 frontend, 136 bridge, 273 managed, 11 Rust and 6 packaged-sidecar checks pass; lint and frontend/native builds pass</span></label>
+      <label><input id="mail16-reminder-native" type="checkbox"><span>Installed Windows reminder notification display verified — still pending</span></label>
       <label><input id="mail16-exact-visual" type="checkbox"><span>Exact visual match across every documented window and state</span></label>
-      <label><input id="mail16-features" type="checkbox"><span>Complete Apple feature coverage, including Smart Mailboxes, Remind Me, VIPs, coloured flags and separate windows</span></label>
+      <label><input id="mail16-features" type="checkbox"><span>Complete Apple feature coverage, including Smart Mailboxes, VIPs, coloured flags and separate windows</span></label>
       <label><input id="mail16-native" type="checkbox"><span>New native UI, real-provider workflows and installer accepted end to end</span></label>
       <label><input id="mail16-complete" type="checkbox"><span>100% parity verified — not achieved</span></label>
     </section>
@@ -571,7 +573,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 5 Oct 2026, 2:43 AM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 5 Oct 2026, 3:40 AM AEST</span></label>
     </section>
 
     <section>

@@ -407,7 +407,7 @@
     <p class="status-kicker">Current owner-approved direction · 11 October 2026</p>
     <h2>Option 02 desktop adoption</h2>
     <p>The approved Option 02 interface and macOS-inspired custom window shell supersede the historical Apple Mail visual goal below. Work continues in the isolated <code>codex/option-02</code> worktree from the preserved <code>46b292e</code> continuation.</p>
-    <p>The interface now reuses the approved prototype's original SVGs, CSS and font stacks. Three appearance modes, dock, qualified selection, durable labels and sidebar preferences are integrated. Local checks: 670 frontend tests, 1,382 bridge checks and 62 matched prototype properties. Frontend, Windows executable and matching sidecar builds pass.</p>
+    <p>The interface reuses the approved prototype CSS and Lucide icon paths. All interface and shell-control icons now use Lucide, with lucide-react components covering the rest of the app. The preview uses the same Inter font face as the prototype; older Windows appearance preferences no longer override Option 02. Sidebar sizing matches the source, with 4 px (about 1 mm) more inset around the edges. The refreshed sample-enabled Windows demo and matching sidecar are available. Earlier local evidence includes 670 frontend tests, 1,382 bridge checks and 62 matched prototype properties; the current icon migration has a successful frontend build and type check.</p>
     <label><input type="checkbox" checked disabled><span>Populated isolated demo: 29 fictional messages, three accounts, all standard mailboxes, seven labels, contacts, signatures, draft, Smart Mailboxes, reminder and disabled rule examples</span></label>
     <label><input type="checkbox" checked disabled><span>Sample browser screens reviewed; actual packaged sidecar sample startup and mailbox checks pass</span></label>
     <label><input type="checkbox" disabled><span>Final native-window/compose, real-provider, installed, Snap, DPI and multiple-monitor acceptance remain open</span></label>
@@ -617,7 +617,7 @@
       <label><input id="status-tree" type="checkbox" checked><span>Dashboard organised as an Overall project tree with nested subsections</span></label>
       <label><input id="status-collapse" type="checkbox" checked><span>Completed items grouped under collapsible arrows in each section</span></label>
       <label><input id="status-numbering" type="checkbox" checked><span>Every tree line has a hierarchical reference number</span></label>
-      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 11 Oct 2026, 4:37 PM AEST</span></label>
+      <label><input id="status-last-sync" type="checkbox" checked><span id="status-last-sync-text">Last dashboard sync: 11 Oct 2026, 5:13 PM AEST</span></label>
     </section>
 
     <section>
